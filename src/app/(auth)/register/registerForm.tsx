@@ -20,7 +20,7 @@ export default function RegisterForm() {
             router.push('/login') 
         }else{
             if (Array.isArray(result.error)){
-                result.error.forEach((e:any)=>{
+                result.error.forEach((e)=>{
                     const fieldName = e.path.join('.') as 'email' | 'name' | 'password' ;
                     setError(fieldName , {message:e.message})
                 })
