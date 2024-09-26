@@ -8,7 +8,7 @@ import UserMenu from './UserMenu'
 export default async function TopNav() {
     const session = await auth();
   return (
-    <Navbar maxWidth='xl' className='bg-gradient-to-r  from-blue-800 to-gray-800'
+    <Navbar maxWidth='xl' className='bg-gradient-to-r  from-blue-600 to-gray-900 shadow-sm shadow-gray-900'
     classNames={ {
       item: [
         'text-xl',
@@ -18,6 +18,7 @@ export default async function TopNav() {
       ]
     }}>
       <NavbarBrand as={Link} href='/'>
+      <img src='/images/iconweb_black.png' width={55} height={55} alt='logo'/>
         <div className='text-4xl font-bold text-white px-5'>
             IOT
         </div>
@@ -26,6 +27,7 @@ export default async function TopNav() {
         <NavLink href='/documents' label='Document'/>
         <NavLink href='/devices' label='Device'/>
         <NavLink href='/aboutus' label='About Us'/>
+        <NavLink href='/wifiSetup' label='Wi-fi Setup'/>
       </NavbarContent>
       <NavbarContent justify='end'>
         {session?.user? (

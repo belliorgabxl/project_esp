@@ -1,6 +1,6 @@
 export const publicRoutes = [
     '/',
-    'documents',
+    '/documents',
     '/aboutus'
 ];
 export const authRoutes = [

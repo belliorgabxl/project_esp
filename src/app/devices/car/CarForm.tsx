@@ -85,32 +85,32 @@ export default function CarForm() {
     <div>
         <div className={` bg-gradient-to-br from-blue-300 to-gray-800 w-full h-screen `}>
             <div className='pt-20 flex justify-center'>
-                <div className={`bg-gradient-to-br from-blue-700 to-gray-700 border-4  px-10  rounded-3xl py-5 `}>
+                <div className={`bg-gradient-to-br from-blue-700 to-gray-700 border-4  px-6  rounded-full py-5 `}>
                     <div className='mx-2 my-3 flex justify-center'>
                         {fw==false ?(
-                            <button onClick={()=>Forward()} className='bg-gray-800 hover:bg-gray-500 text-white px-5 py-5 rounded-lg'>Forward</button> 
+                            <button onClick={()=>Forward()} className='bg-gray-800 hover:bg-gray-500 text-white px-5 py-5 rounded-full'><img src="/images/forwardWhite.png" height={40} width={40} alt="logo"/></button> 
                         ):(
-                            <button onClick={()=>Forward()} className='bg-green-600 hover:bg-gray-500 text-white px-5 py-5 rounded-lg'>Forward</button> 
+                            <button onClick={()=>Forward()} className='bg-green-600 hover:bg-gray-500 text-white px-5 py-5 rounded-full'><img src="/images/forwardBlack.png" height={40} width={40} alt="logo"/></button> 
                         )}
                     </div>
                     <div className='flex justify-center'>
                         {lf == false ? (
-                            <button onClick={()=>Left()} className='bg-gray-800 hover:bg-gray-500 mx-4 my-3  text-white px-8 py-5 rounded-lg'>Left</button>
+                            <button onClick={()=>Left()} className='bg-gray-800 hover:bg-gray-500 mx-10 my-3  text-white px-5 py-5 rounded-full'><img src="/images/leftWhite.png" height={40} width={40} alt="logo"/></button>
                         ):
                         (
-                            <button onClick={()=>Left()} className='bg-green-600 hover:bg-green-500 mx-4 my-3  text-white px-8 py-5 rounded-lg'>Left</button>
+                            <button onClick={()=>Left()} className='bg-green-600 hover:bg-green-500 mx-10 my-3  text-white px-5 py-5 rounded-full'><img src="/images/leftBlack.png" height={40} width={40} alt="logo"/></button>
                         )}
                         {rt==false ? (
-                            <button onClick={()=>Right()} className='bg-gray-800 hover:bg-gray-500 mx-4 my-3  text-white px-8 py-5 rounded-lg'>Right</button>
+                            <button onClick={()=>Right()} className='bg-gray-800 hover:bg-gray-500 mx-10 my-3  text-white px-5 py-5 rounded-full'><img src="/images/rightWhite.png" height={40} width={40} alt="logo"/></button>
                         ):(
-                            <button onClick={()=>Right()} className='bg-green-600 hover:bg-gray-500 mx-4 my-3  text-white px-8 py-5 rounded-lg'>Right</button>
+                            <button onClick={()=>Right()} className='bg-green-600 hover:bg-gray-500 mx-10 my-3  text-white px-5 py-5 rounded-full'><img src="/images/rightBlack.png" height={40} width={40} alt="logo"/></button>
                         )}
                     </div>
                     <div  className='flex justify-center'>
                         {bw == false ? (
-                            <button onClick={()=>Backward()} className='bg-gray-800 hover:bg-gray-500  mx-2 my-3  text-white px-5 py-5 rounded-lg'>BackWard</button>
+                            <button onClick={()=>Backward()} className='bg-gray-800 hover:bg-gray-500  mx-2 my-3  text-white px-5 py-5 rounded-full'><img src="/images/backWhite.png" height={40} width={40} alt="logo"/></button>
                         ):(
-                            <button onClick={()=>Backward()} className='bg-green-600 hover:bg-gray-500  mx-2 my-3  text-white px-5 py-5 rounded-lg'>BackWard</button>
+                            <button onClick={()=>Backward()} className='bg-green-600 hover:bg-gray-500  mx-2 my-3  text-white px-5 py-5 rounded-full'><img src="/images/backBlack.png" height={40} width={40} alt="logo"/></button>
                         )}
                     </div>
                 </div>
