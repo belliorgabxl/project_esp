@@ -23,11 +23,11 @@ export default async function TopNav() {
             IOT
         </div>
       </NavbarBrand>
-      <NavbarContent justify='center' className='gap-0'>
+      <NavbarContent justify='center' className='gap-4'>
         <NavLink href='/documents' label='Document'/>
         <NavLink href='/devices' label='Device'/>
         <NavLink href='/aboutus' label='About Us'/>
-        <NavLink href='/wifiSetup' label='Wi-fi Setup'/>
+        {/* <NavLink href='/wifiSetup' label='Wi-fi Setup'/> */}
       </NavbarContent>
       <NavbarContent justify='end'>
         {session?.user? (
