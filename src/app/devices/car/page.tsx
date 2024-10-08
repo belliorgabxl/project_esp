@@ -1,10 +1,7 @@
 import React from 'react'
-import CarForm from './CarForm'
 
-export default function car() {
+export default function page() {
   return (
-    <div>
-        <CarForm/>
-    </div>
+    <div>page</div>
   )
 }

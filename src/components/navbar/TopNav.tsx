@@ -18,7 +18,7 @@ export default async function TopNav() {
       ]
     }}>
       <NavbarBrand as={Link} href='/'>
-      <img src='/images/iconweb_black.png' width={55} height={55} alt='logo'/>
+      <img src='/images/iconweb_white.png' width={55} height={55} alt='logo'/>
         <div className='text-4xl font-bold text-white px-5'>
             IOT
         </div>
