@@ -12,11 +12,11 @@ export async function GET(request, { params }) {
   return NextResponse.json( products, { status: 200 });
 }
 
-// export async function PUT(request, { params }) {
-//   const { id } = params;
-//   const { newTitle: title, newDescription: description } = await request.json();
-//   await connectMongoDB();
-//   await Topic.findByIdAndUpdate(id, { title, description });
-//   return NextResponse.json({ message: "Topic updated" }, { status: 200 });
-// }
+export async function PUT(request, { params }) {
+  const { productId } = params;
+  const { newStatus: status} = await request.json();
+  await connectMongoDB();
+  await Product.findOneAndUpdate({productId:productId} , {status});
+  return NextResponse.json({ message: "Product updated" }, { status: 200 });
+}
 

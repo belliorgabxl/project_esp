@@ -49,6 +49,7 @@ export default function CarForm({ params }: { params: { deviceId: string } }) {
 
     const [client, setClient] = useState<MqttClient | null>(null);
     const [isConnected, setIsConnected] = useState<boolean>(false);
+    const [topic , setTopic]  = useState<string>("")
     const [fw,setFW] = useState<boolean>(false);
     const [bw,setBW] = useState<boolean>(false);
     const [lf,setLF] = useState<boolean>(false);
@@ -57,8 +58,9 @@ export default function CarForm({ params }: { params: { deviceId: string } }) {
     useEffect(() => {
         fetchDeviceId(deviceId).then((item:any)=>{
             setDeviceData(item)
+            setTopic(item.devicePath)
+        
         })
-
         const client = mqtt.connect('wss://4cff082ff4a746da91e5ff64e35e8674.s1.eu.hivemq.cloud:8884/mqtt', {
             clientId: 'bf71c559-1fb8-447b-b6ca-ef29315b7b67',
             username: "admin",
@@ -81,14 +83,15 @@ export default function CarForm({ params }: { params: { deviceId: string } }) {
         }
         };
   }, []);
+  
 
   const Forward = async()=>{
     if (client && isConnected) {
         if(fw == false){
-            client.publish('esp32/car/control', 'forward');
+            client.publish(topic, 'forward');
             setFW(true);console.log("forward : ON");
         }else if (fw==true){
-            client.publish('esp32/car/control', 'stop');
+            client.publish(topic, 'stop');
             setFW(false);console.log("forward : OFF");
         }
       }
@@ -96,12 +99,12 @@ export default function CarForm({ params }: { params: { deviceId: string } }) {
   const Backward = async()=>{
     if (client && isConnected) {
         if(bw==false){
-            client.publish('esp32/car/control', 'backward');
+            client.publish(topic, 'backward');
             setBW(true)
             console.log("backward : ON");
             
         }else if (bw == true){
-            client.publish('esp32/car/control', 'stop');
+            client.publish(topic, 'stop');
             setBW(false)
             console.log("backward : OFF");
         }
@@ -110,10 +113,10 @@ export default function CarForm({ params }: { params: { deviceId: string } }) {
   const Left = ()=>{
     if (client && isConnected) {
         if(lf==false){
-            client.publish('esp32/car/control', 'left'); 
+            client.publish(topic, 'left'); 
             setLF(true);console.log("left : ON");
         }else{
-            client.publish('esp32/car/control', 'stop');
+            client.publish(topic, 'stop');
             setLF(false);console.log("left : OFF");
         }
       }
@@ -121,10 +124,10 @@ export default function CarForm({ params }: { params: { deviceId: string } }) {
   const Right = ()=>{
     if (client && isConnected) {
         if(rt==false){
-            client.publish('esp32/car/control', 'right');  
+            client.publish(topic, 'right');  
             setRT(true);console.log("right : ON");
         }else{
-            client.publish('esp32/car/control', 'stop');
+            client.publish(topic, 'stop');
             setRT(false);console.log("right : OFF");
         }
       }
@@ -148,7 +151,7 @@ const handleEdit = async()=>{
             const wfp= wifiPW
             
             console.log(`wfn:${wfn},wfp:${wfp}`)
-            client.publish('esp32/car/control', `wfn:${wfn},wfp:${wfp}`);
+            client.publish(topic, `wfn:${wfn},wfp:${wfp}`);
             try{
                 let newWifiName = wifiName
                 let newWifiPassword = wifiPW
@@ -194,7 +197,8 @@ console.log(deviceData)
                     <button onClick={onClickPopUp}
                      className="text-white bg-blue-600 px-10 py-2 rounded-md hover:bg-gray-500">Wi-Fi Set UP</button>
                 </div>
-            <div className='pt-10 grid grid-cols-[35%_20%_40%] pb-20'>
+            <div className=' grid grid-cols-[10%_35%_10%_40%] pb-20'>
+                <div></div>
                 <div className="px-7 mx-10 pt-3 pb-3 bg-gradient-to-tl from-gray-800 to-blue-600 text-white rounded-lg shadow-lg shadow-black duration-500   hover:bg-gradient-to-br hover:shadow-black hover:shadow-xl  hover:from-blue-500 w-4/5 hover:to-gray-800">
                     <div className="w-full grid place-items-start my-3 mx-4">
                         <label>Device Name</label>
@@ -206,7 +210,7 @@ console.log(deviceData)
                         <span className="mx-4 text-start">
                             <label>Topic Path</label>
                             <div className="px-10 bg-gray-700 shadow-inner shadow-black rounded-md py-2">
-                            {deviceData?.devicePath}  
+                            {topic}  
                             </div> 
                         </span>
                         <span className="mx-4 text-start">
@@ -223,10 +227,19 @@ console.log(deviceData)
                         </div>
                     </div>
                     <div className="w-full grid place-items-start mx-4 my-3">
-                        <label>Status</label>
-                        <div className="px-5 bg-gray-700 shadow-inner text-green-500 font-bold shadow-black rounded-md py-2">
-                          {deviceData?.status}  
-                        </div>
+                        <label>Status</label> {
+                            client && isConnected ? (
+                                <div className="px-5 bg-gray-700 shadow-inner text-green-500 font-bold shadow-black rounded-md py-2">
+                                    Connected  
+                                </div> 
+                            ):
+                            (
+                                <div className="px-5 bg-gray-700 shadow-inner text-red-600 font-bold shadow-black rounded-md py-2">
+                                    No connect
+                                </div>
+                            )
+                        }
+                        
                     </div>
                     <div className="w-full grid place-items-start mx-4 my-3">
                         <label>Description</label>
