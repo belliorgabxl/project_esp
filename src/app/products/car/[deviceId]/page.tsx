@@ -88,10 +88,10 @@ export default function CarForm({ params }: { params: { deviceId: string } }) {
   const Forward = async()=>{
     if (client && isConnected) {
         if(fw == false){
-            client.publish(topic, 'forward');
+            client.publish(topic, 'ctrl/forward');
             setFW(true);console.log("forward : ON");
         }else if (fw==true){
-            client.publish(topic, 'stop');
+            client.publish(topic, 'ctrl/stop');
             setFW(false);console.log("forward : OFF");
         }
       }
@@ -99,12 +99,12 @@ export default function CarForm({ params }: { params: { deviceId: string } }) {
   const Backward = async()=>{
     if (client && isConnected) {
         if(bw==false){
-            client.publish(topic, 'backward');
+            client.publish(topic, 'ctrl/backward');
             setBW(true)
             console.log("backward : ON");
             
         }else if (bw == true){
-            client.publish(topic, 'stop');
+            client.publish(topic, 'ctrl/stop');
             setBW(false)
             console.log("backward : OFF");
         }
@@ -113,10 +113,10 @@ export default function CarForm({ params }: { params: { deviceId: string } }) {
   const Left = ()=>{
     if (client && isConnected) {
         if(lf==false){
-            client.publish(topic, 'left'); 
+            client.publish(topic, 'ctrl/left'); 
             setLF(true);console.log("left : ON");
         }else{
-            client.publish(topic, 'stop');
+            client.publish(topic, 'ctrl/stop');
             setLF(false);console.log("left : OFF");
         }
       }
@@ -124,10 +124,10 @@ export default function CarForm({ params }: { params: { deviceId: string } }) {
   const Right = ()=>{
     if (client && isConnected) {
         if(rt==false){
-            client.publish(topic, 'right');  
+            client.publish(topic, 'ctrl/right');  
             setRT(true);console.log("right : ON");
         }else{
-            client.publish(topic, 'stop');
+            client.publish(topic, 'ctrl/stop');
             setRT(false);console.log("right : OFF");
         }
       }
