@@ -31,10 +31,7 @@ export async function signInUser(data: LoginSchema) : Promise<ActionResult<strin
         }else{
             return {status:'error' , error:"Something else went wrong"}
         }
-
     }
-
-    
 }
 export async function registerUser(data : RegisterSchema): Promise<ActionResult<User>>{
     try
@@ -74,7 +71,6 @@ export async function getUserByEmail(email: string){
 export async function getUserById(id: string){
     return prisma.user.findUnique({where : {id}});
 }
-
 export async function signOutUser(){
     await signOut({redirectTo: '/'})
 }

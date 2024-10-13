@@ -165,7 +165,13 @@ void callback(char *topic, byte *payload, unsigned int length) {
       Serial.println("\n\n===========  [ Data written to EEPROM Success!! ]  ===========\n");
     }
     if(message.startsWith("ctrl/")){
+      // code //
+      // code //
+      // code //
       Serial.println("function control...");
+      // code //
+      // code //
+      // code //
     }
     if(message.startsWith("defaultwifi")){
         for (int i = 0; i < EEPROM_SIZE; i++) {

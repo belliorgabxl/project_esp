@@ -248,7 +248,14 @@ export default function CarForm({ params }: { params: { deviceId: string } }) {
             Wi-Fi Set UP
           </button>
         </div>
-        <div className=" grid grid-cols-[10%_35%_10%_40%] pb-20">
+        <div className="
+          grid 
+          grid-cols-1 
+          sm:grid-cols-[10%_35%_10%_40%] 
+          md:grid-cols-[10%_35%_10%_40%] 
+          lg:grid-cols-[10%_35%_10%_40%] 
+          pb-20
+        ">
           <div></div>
           <div className="px-7 mx-10 pt-3 pb-3 bg-gradient-to-tl from-gray-800 to-blue-600 text-white rounded-lg shadow-lg shadow-black duration-500   hover:bg-gradient-to-br hover:shadow-black hover:shadow-xl  hover:from-blue-500 w-4/5 hover:to-gray-800">
             <div className="w-full grid place-items-start my-3 mx-4">
