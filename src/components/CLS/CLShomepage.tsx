@@ -17,23 +17,23 @@ export default function CLShomepage() {
             swipeable={false}
          >
                 <div>
-                    <img src="/assets/slide01.jpg" />
+                    <img src="./assets/slide01.jpg" />
                     <p className="legend">Beyond to new technology</p>
                 </div>
                 <div>
-                    <img src="/assets/slide02.jpg" />
+                    <img src="./assets/slide02.jpg" />
                     <p className="legend">Our Service</p>
                 </div>
                 <div>
-                    <img src="/assets/slide03.jpg"  />
+                    <img src="./assets/slide03.jpg"  />
                     <p className="legend">you never seen before</p>
                 </div>
                 <div>
-                    <img src="/assets/slide04.jpg"  />
+                    <img src="./assets/slide04.jpg"  />
                     <p className="legend">5G planning</p>
                 </div>
                 <div>
-                    <img src="/assets/slide05.jpg"  />
+                    <img src="./assets/slide05.jpg"  />
                     <p className="legend">Iot EveryWhere</p>
                 </div>
             </Carousel>

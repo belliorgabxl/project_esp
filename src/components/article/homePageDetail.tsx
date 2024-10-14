@@ -1,9 +1,7 @@
 "use client";
-
-import Link from "next/link";
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import GetstartButton from "../button/getstartButton";
-
 export default function Homepage_article() {
   const [isLoading, setLoading] = useState<boolean>(false);
   useEffect(() => {
@@ -24,7 +22,7 @@ export default function Homepage_article() {
         <div className="flex">
           <span className="text-3xl text-white">Our Service</span>
           <span className="mx-5">
-            <img src="/general/service_icon.png" width={40} height={40} />
+            <Image src="/general/service_icon.png" alt="service_icon" width={40} height={40} />
           </span>
         </div>
         <hr className="my-5" />
