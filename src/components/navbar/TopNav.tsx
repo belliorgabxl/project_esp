@@ -23,7 +23,7 @@ export default async function TopNav() {
             IOT
         </div>
       </NavbarBrand>
-      <NavbarContent justify='center' className='gap-4'>
+      <NavbarContent justify='center' className='gap-0'>
         <NavLink href='/documents' label='Document'/>
         <NavLink href='/production' label="Products"/>
         <NavLink href='/devices' label='Device'/>
