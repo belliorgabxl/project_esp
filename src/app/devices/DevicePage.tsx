@@ -44,7 +44,6 @@ const getDeviceByUser = async (id:string)=>{
 
 const getAllProducts = async ()=>{
   const response = await fetch(`http://localhost:3000/api/products`)
-
   return await response.json();
 }
 
@@ -68,7 +67,7 @@ export default function DevicePage({user}:Props) {
     getDeviceByUser(String(userId)).then((data:any)=>{
       setDevices(data)
     })
-    getAllProducts().then((item)=>{
+    getAllProducts().then((item:any)=>{
       setProducts(item);
     })
   },[])

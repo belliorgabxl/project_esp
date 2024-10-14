@@ -25,6 +25,7 @@ export default async function TopNav() {
       </NavbarBrand>
       <NavbarContent justify='center' className='gap-4'>
         <NavLink href='/documents' label='Document'/>
+        <NavLink href='/production' label="Products"/>
         <NavLink href='/devices' label='Device'/>
         <NavLink href='/aboutus' label='About Us'/>
         {/* <NavLink href='/wifiSetup' label='Wi-fi Setup'/> */}
