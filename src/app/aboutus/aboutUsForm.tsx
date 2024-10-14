@@ -26,7 +26,7 @@ export default function AboutUsForm() {
         </h1>
         <div className="w-full px-10 flex justify-start">
           <h1
-            className={`text-2xl my-5 duration-1000 text-white py-4 rounded-lg bg-blue-900  ${
+            className={`text-3xl my-5 duration-1000 text-white py-4 shadow-md shadow-gray-900 rounded-lg bg-blue-950  ${
               isLoading ? "px-60" : "px-4 bg-gray-950"
             }`}
           >
@@ -36,7 +36,7 @@ export default function AboutUsForm() {
         <AboutUsDetail isLoading={isLoading} />
         <div className="w-full px-10 flex justify-start">
           <h1
-            className={`text-2xl my-5 duration-1000 text-white py-4 rounded-lg bg-blue-900  ${
+            className={`text-3xl my-5 duration-1000 text-white py-4 shadow-md shadow-gray-900 rounded-lg bg-blue-950   ${
               isLoading ? "px-60" : "px-4 bg-gray-950"
             }`}
           >
@@ -45,7 +45,7 @@ export default function AboutUsForm() {
         </div>
         <div>
           <div
-            className={`duration-1000 flex w-full justify-center  my-5 ${
+            className={`duration-1000 flex w-full justify-center animate-spin  my-5 ${
               isLoading ? "px-10" : "opacity-0 h-10 px-0"
             }`}
           >
@@ -69,7 +69,7 @@ export default function AboutUsForm() {
         </div>
         <div className="w-full px-10 flex justify-start">
           <h1
-            className={`text-2xl my-5 duration-1000 text-white py-4 rounded-lg bg-blue-900  ${
+            className={`text-3xl my-5 duration-1000 text-white py-4 shadow-md shadow-gray-900 rounded-lg bg-blue-950   ${
               isLoading ? "px-60" : "px-4 bg-gray-950"
             }`}
           >

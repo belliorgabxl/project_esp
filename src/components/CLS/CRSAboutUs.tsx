@@ -2,13 +2,13 @@
 import React from 'react'
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-
+import "./styles.css";
 type Props= {
     isLoading:boolean;
 }
 export default function CRSAboutUs({isLoading}:Props) {
   return (
-    <div className={` duration-1000 ${isLoading? 'opacity-100':'opacity-0'}`}>
+    <div className={`transition-opacity duration-1000 ${isLoading? 'animate-fadeIn':'opacity-0'}`}>
         <Carousel 
             autoPlay={true}
             interval={2500}

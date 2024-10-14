@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import GetstartButton from "../button/getstartButton";
 export default function Homepage_article() {
@@ -15,14 +14,14 @@ export default function Homepage_article() {
       <div
         className={`grid  ${
           isLoading
-            ? "bg-gray-900 hover:bg-gray-700 duration-1000  mx-5 rounded-md shadow-md shadow-black my-10 py-10 px-10 w-3/5"
+            ? "bg-gray-900 hover:bg-gray-700 duration-1000  mx-5 rounded-md shadow-md shadow-black mt-8 mb-5 py-10 px-10 w-3/5"
             : "opacity-0 w-2/5"
         }`}
       >
         <div className="flex">
           <span className="text-3xl text-white">Our Service</span>
           <span className="mx-5">
-            <Image src="/general/service_icon.png" alt="service_icon" width={40} height={40} />
+            <img src="/general/service_icon.png" alt="service_icon" width={40} height={40} />
           </span>
         </div>
         <hr className="my-5" />
@@ -31,7 +30,7 @@ export default function Homepage_article() {
           with log monitoring The Internet of Things(IoT) enables users to
           control various aspects of their lives remotely at any time and
           location. IoT devices make people interact more conveniently and
-          efficiently with electronic equipment.{" "}
+          efficiently with electronic equipment.
         </p>
       </div>
 
@@ -39,7 +38,7 @@ export default function Homepage_article() {
         <div
           className={`grid  ${
             isLoading
-              ? "bg-gray-900 hover:bg-gray-700 duration-1000  mx-5 rounded-md shadow-md shadow-black my-10 py-10 px-10 w-3/5"
+              ? "bg-gray-900 hover:bg-gray-700 duration-1000  mx-5 rounded-md shadow-md shadow-black my-5 py-10 px-10 w-3/5"
               : "opacity-0 w-2/5"
           }`}
         >
@@ -73,7 +72,7 @@ export default function Homepage_article() {
       <div
         className={`grid  ${
           isLoading
-            ? "bg-gray-900 hover:bg-gray-700 duration-1000  mx-5 rounded-md shadow-md shadow-black my-10 py-10 px-10 w-3/5"
+            ? "bg-gray-900 hover:bg-gray-700 duration-1000  mx-5 rounded-md shadow-md shadow-black my-5 py-10 px-10 w-3/5"
             : "opacity-0 w-2/5"
         }`}
       >
@@ -106,7 +105,7 @@ export default function Homepage_article() {
         <div
           className={`grid  ${
             isLoading
-              ? "bg-gray-900 hover:bg-gray-700 duration-1000  mx-5 rounded-md shadow-md shadow-black my-10 py-10 px-10 w-3/5"
+              ? "bg-gray-900 hover:bg-gray-700 duration-1000  mx-5 rounded-md shadow-md shadow-black my-5 py-10 px-10 w-3/5"
               : "opacity-0 w-2/5"
           }`}
         >

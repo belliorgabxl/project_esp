@@ -420,11 +420,11 @@ export default function CarForm({ params }: { params: { deviceId: string } }) {
       </div>
       {popUp_click == true && (
         <div
-          className="fixed inset-0 flex items-center justify-center bg-gray-200 bg-opacity-15"
+          className="fixed inset-0 flex items-center justify-center bg-gray-200 bg-opacity-45"
           onClick={onClosePopUp}
         >
           <div
-            className="bg-gray-800 px-12 py-10 rounded-lg w-3/10 z-100 grid place-items-center duration-500"
+            className="bg-gray-800 shadow-lg shadow-gray-950  px-12 py-10 rounded-lg w-3/10 z-100 grid place-items-center duration-500"
             onClick={(e) => e.stopPropagation()}
           >
             <h1 className="text-white text-3xl text-center shadow-md shadow-black bg-gray-900 rounded-md px-10 py-2 w-3/5">
@@ -484,7 +484,7 @@ export default function CarForm({ params }: { params: { deviceId: string } }) {
             {popUp_clearWifi == true && (
                 <div className="fixed inset-0 flex items-center justify-center bg-gray-200 bg-opacity-35"
                 onClick={onClosePopUpClearWifi}>
-                    <div className="bg-gray-800 px-12 py-5 rounded-lg w-1/5 z-110 duration-500" onClick={(e)=> e.stopPropagation()}>
+                    <div className="bg-gray-800 px-12 py-5 rounded-lg w-1/5 z-110 duration-500  shadow-lg shadow-gray-950 " onClick={(e)=> e.stopPropagation()}>
                     <h1 className="text-center text-white text-2xl py-4">Confirm set to default Wi-Fi</h1>
                     <div className="flex justify-center w-full my-3 gap-5">
                 <button

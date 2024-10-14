@@ -267,7 +267,7 @@ export default function DevicePage({user}:Props) {
     {popUp_click  == true && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-200 bg-opacity-35"
         onClick={onClosePopUp}>
-        <div className="bg-gray-800 px-12 py-14 rounded-lg w-2/5 z-100 " onClick={(e)=> e.stopPropagation()}>
+        <div className="bg-gray-800 px-12 py-14 rounded-lg w-2/5 z-100 shadow-lg shadow-gray-950 " onClick={(e)=> e.stopPropagation()}>
          <div className="text-2xl  text-white text-center grid ">
          <select id="addDevice" onChange={handleChangeType} 
          className="bg-gray-500 border-2 w-3/5 px-5 py-3 border-black rounded-md" >

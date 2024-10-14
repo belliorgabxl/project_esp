@@ -6,7 +6,7 @@ export default function AboutUsDetail({ isLoading }: Props) {
   return (
     <div className="grid w-full">
       <div
-        className={`duration-1000 flex w-full justify-start   my-5 ${
+        className={`duration-1000 flex w-full justify-start hover:ml-32   my-5 ${
           isLoading ? "px-10" : "opacity-0 h-10 px-0"
         }`}
       >
@@ -30,7 +30,7 @@ export default function AboutUsDetail({ isLoading }: Props) {
 
       {/* bam */}
       <div
-        className={`duration-1000 flex w-full justify-center   my-5 ${
+        className={`duration-1000 flex w-full justify-center hover:ml-32    my-5 ${
           isLoading ? "px-12" : "opacity-0  px-0"
         }`}
       >
@@ -53,7 +53,7 @@ export default function AboutUsDetail({ isLoading }: Props) {
       </div>
 
       <div
-        className={`duration-1000 flex w-full justify-end   my-5 ${
+        className={`duration-1000 flex w-full justify-end  hover:w-4/5     my-5 ${
           isLoading ? "px-12" : "opacity-0  px-0"
         }`}
       >
