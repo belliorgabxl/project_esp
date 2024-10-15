@@ -16,30 +16,30 @@ export default function DocumentForm() {
       <div
         className={`transition-opacity  duration-1000 ${
           isLoading
-            ? "animate-fadeIn bg-gray-500 gird px-5 py-5  shadow-md shadow-gray-950 border-r-2 border-gray-500"
+            ? "animate-fadeIn bg-gradient-to-tl from-blue-950 to-gray-800  px-5 py-5  shadow-md shadow-gray-950 border-r-2 border-gray-900"
             : "opacity-0"
         }  `}
       >
-        <div className="text-2xl bg-gray-700 px-10 py-3  text-white shadow-md shadow-gray-800 my-6 grid place-items-center">
+        <div className="text-2xl font-semibold bg-gray-900 px-10 py-3  text-white shadow-md shadow-gray-950 my-6 grid place-items-center">
           Side Bar
         </div>
-        <div className="underline duration-500 hover:text-blue-900 text-xl w-full flex justify-start text-white my-10 px-5 ">
-          - Get Started
+        <div className=" duration-500 font-semibold hover:text-blue-900 text-xl w-full flex justify-start text-white my-10 px-5 ">
+          Get Started
         </div>
-        <div className="underline duration-500 hover:text-blue-900 text-xl w-full flex justify-start text-white my-10 px-5 ">
-          - How to Connect
+        <div className=" duration-500 hover:text-blue-900 text-xl w-full flex justify-start text-gray-300 my-10 px-5 ">
+          How to Connect
         </div>
-        <div className="underline duration-500 hover:text-blue-900 text-xl w-full flex justify-start text-white my-10 pl-5 ">
-          - How to switch home wifi
+        <div className=" duration-500 hover:text-blue-900 text-xl w-full flex justify-start text-gray-300 my-10 pl-5 ">
+          How to switch home wifi
         </div>
-        <div className="underline duration-500 hover:text-blue-900 text-xl w-full flex justify-start text-white my-10 px-5 ">
-          - Control your devices
+        <div className=" duration-500 hover:text-blue-900 text-xl w-full flex justify-start text-gray-300 my-10 px-5 ">
+          Control your devices
         </div>
-        <div className="underline duration-500 hover:text-blue-900 text-xl w-full flex justify-start text-white my-10 px-5 ">
-          - Log monitoring
+        <div className=" duration-500 hover:text-blue-900 text-xl w-full flex justify-start text-gray-300 my-10 px-5 ">
+          Log monitoring
         </div>
-        <div className="underline duration-500 hover:text-blue-900 text-xl w-full flex justify-start text-white my-10 px-5 ">
-          - Basic of IoT devices
+        <div className=" duration-500 hover:text-blue-900 text-xl w-full flex justify-start text-gray-300 my-10 px-5 ">
+          Basic of IoT devices
         </div>
       </div>
       <div className=" grid place-items-center px-3  pb-20">
@@ -61,9 +61,9 @@ export default function DocumentForm() {
 
         <div className="bg-gray-800 w-full rounded-2xl grid place-items-center">
           <div className={`my-10 w-10/12 ${isLoading ? 'animate-fadeIn':'opacity-0'}`}>
-            <h1 className="text-3xl text-white mb-5">IoT Web-Application</h1>
+            <li className="text-3xl text-white mb-5 font-semibold">Open Source IoT PlatForm</li>
             <div className="bg-gray-950 px-5 py-10  text-white text-2xl">
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="bg-gray-500 px-2 text-2xl font-bold mr-3">This IoT web application</span>is designed to
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-600 px-2 text-2xl font-semibold mr-1">This IoT PlatForm</span>: is designed to
               manage IoT devices and enable users to control them through a web
               interface. It allows users to operate IoT devices from anywhere,
               at any time, by simply connecting the devices to the internet and
@@ -76,29 +76,29 @@ export default function DocumentForm() {
           <hr className={`w-5/6 my-5 ${isLoading ? 'animate-fadeIn':'opacity-0'}`} />
 
           <div className={`my-10 w-10/12 ${isLoading ? 'animate-fadeIn':'opacity-0'}`}>
-            <h1 className="text-3xl text-white mb-5">Main Features</h1>
+            <li className="text-3xl text-white mb-5 font-semibold">Main Features</li>
             <div className="bg-gray-950 px-5 py-10  text-white text-2xl">
               &nbsp;&nbsp;&nbsp;&nbsp;The main features of this web application
               are as follows:
               <br /><br/><br/>
-              &nbsp;&nbsp;&nbsp;&nbsp;- **IoT device connectivity**: The web
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-600 px-2 text-2xl font-semibold mr-1">IoT device connectivity</span>: The web
               application is specifically designed for easy use with IoT
               devices.It allows users to connect their IoT devices to the web
               app effortlessly, enabling self-setup at home without the need for
               technical assistance.
               <br /><br/>
-              &nbsp;&nbsp;&nbsp;&nbsp;- **IoT device management**: Whether you
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-600 px-2 text-2xl font-semibold mr-1">IoT device management</span>: Whether you
               have multiple IoT devices, the application simplifies device
               management by displaying all connected IoT devices on a single
               dashboard, making it easy to monitor and control each one.
               <br /><br/>
-              &nbsp;&nbsp;&nbsp;&nbsp;- **Real-time control and operation**: You
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-600 px-2 text-2xl font-semibold mr-1">Real-time control and operation</span>: You
               can control and manage your IoT devices in real-time, from
               anywhere and at any time, as long as the devices are connected to
               the internet. The web app provides 24/7 access for issuing
               commands to your devices, no matter the location.
               <br /><br/>
-              &nbsp;&nbsp;&nbsp;&nbsp;- **Wi-Fi connection management**: The
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-600 px-2 text-2xl font-semibold mr-1">Wi-Fi connection cinfiguration</span>: The
               application allows you to easily change the Wi-Fi connection of
               your IoT devices. You can update the Wi-Fi network's username and
               password through the web interface at any time, ensuring
@@ -107,7 +107,7 @@ export default function DocumentForm() {
           </div>
 
           <div className={`my-10 w-10/12 ${isLoading ? 'animate-fadeIn':'opacity-0'}`}>
-            <h1 className="text-3xl text-white mb-5">Devices</h1>
+            <li className="text-3xl text-white mb-5 font-semibold">Devices</li>
             <div className="bg-gray-950 px-5 py-10  text-white text-2xl">
               &nbsp;&nbsp;&nbsp;&nbsp;The devices in this web application are
               categorized into three types:
@@ -136,7 +136,7 @@ export default function DocumentForm() {
           </div>
 
           <div className={`my-10 w-10/12 ${isLoading ? 'animate-fadeIn':'opacity-0'}`}>
-            <h1 className="text-3xl text-white mb-5">Topic</h1>
+            <h1 className="text-3xl text-white mb-5 font-semibold">Topic</h1>
             <div className="bg-gray-950 px-5 py-10  text-white text-2xl">
               &nbsp;&nbsp;&nbsp;&nbsp;
             </div>

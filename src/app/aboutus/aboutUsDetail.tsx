@@ -19,7 +19,7 @@ export default function AboutUsDetail({ isLoading }: Props) {
         </div>
         <div className="">
           <img
-            src="aboutus/gabel.jpg"
+            src="/aboutus/aboutus_gabel.jpg"
             width={200}
             height={200}
             alt="gabel"
@@ -43,7 +43,7 @@ export default function AboutUsDetail({ isLoading }: Props) {
         </div>
         <div className="">
           <img
-            src="aboutus/bam.jpg"
+            src="/aboutus/aboutus_bam.jpg"
             width={200}
             height={200}
             alt="gabel"
@@ -66,10 +66,10 @@ export default function AboutUsDetail({ isLoading }: Props) {
         </div>
         <div className="">
           <img
-            src="aboutus/por.jpg"
+            src="/aboutus/aboutus_por.jpg"
             width={200}
             height={200}
-            alt="gabel"
+            alt="por"
             className="rounded-xl shadow-md shadow-gray-800"
           />
         </div>

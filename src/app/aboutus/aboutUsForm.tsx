@@ -58,7 +58,7 @@ export default function AboutUsForm() {
             </div>
             <div className="">
               <img
-                src="aboutus/watid1.jpg"
+                src="/aboutus/watid.jpg"
                 width={"full"}
                 height={"full"}
                 alt="gabel"

@@ -8,7 +8,6 @@ export default function Home() {
         <div className="bg-gray-800 mb-5">
           <CLShomepage />
         </div>
-        
       </div>
       <Homepage_article />
     </div>
