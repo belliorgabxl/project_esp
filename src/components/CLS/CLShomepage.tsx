@@ -24,6 +24,7 @@ export default function CLShomepage() {
         showThumbs={false}
         dynamicHeight={false}
         swipeable={true}
+        stopOnHover={false}
       >
         <div>
           <img src="./assets/slide01.jpg" alt="slide1" />

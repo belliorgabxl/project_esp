@@ -53,19 +53,18 @@ const getAllProducts = async ()=>{
 export default function DevicePage({user}:Props) {
   const userId = user?.id
   const [popUp_click , setPopUpClick] = useState<boolean>();
-  const [loading_state , setLoading] = useState<boolean>(false);
+  const [loading_state , setLoadings] = useState<boolean>(false);
 
   const [devices , setDevices] = useState<DeviceData[]>([])
   const [products , setProducts] = useState<ProductData[]>([])
   const [device_type , setDevicType] = useState<string>('');
   const [device_name , setDeviceName] = useState<string>('');
-  const [device_id , setDeviceId] = useState<string>();
   const [product_id ,setProductId] = useState<string>('');
-  const mock_productId = [1001, 1002, 1003];  
-  let a =''
+  const [isLoading , setLoading] = useState<boolean>(false);
   useEffect(()=>{
     getDeviceByUser(String(userId)).then((data:any)=>{
       setDevices(data)
+      setLoading(true);
     })
     getAllProducts().then((item:any)=>{
       setProducts(item);
@@ -88,10 +87,10 @@ export default function DevicePage({user}:Props) {
     setProductId('');
   }
   const setLoadingButton=()=>{
-    setLoading(true)
+    setLoadings(true)
   }
   const unsetLoadingButton=()=>{
-    setLoading(false)
+    setLoadings(false)
   }
   const onClosePopUp=()=>{
     setPopUpClick(false)
@@ -241,7 +240,7 @@ export default function DevicePage({user}:Props) {
         <button className="bg-blue-600 rounded-md hover:bg-slate-600  shadow-md shadow-black text-white px-10 py-4 my-5 mx-5" onClick={onClickPopUp}>+ Add Device</button>
       </div>
       <div className='flex justify-center pt-5 mb-20'>
-        {devices.length >0 ? (
+        {devices.length > 0 && isLoading == true ? (
         <div className='grid grid-cols-3 gap-5 w-9/10  px-20 py-10 bg-gray-700 border-2 border-dotted border-gray-500'>
           {devices?.map((item:DeviceData)=>(
             <Link href={"/products/"+item.deviceType+"/"+item.deviceId} key={item.deviceId} className='px-7 py-8 bg-gradient-to-tl from-gray-800 to-blue-600 text-white rounded-lg shadow-lg shadow-black duration-500   hover:bg-gradient-to-br hover:shadow-black hover:shadow-xl  hover:from-blue-500 hover:to-gray-800' >
@@ -257,9 +256,13 @@ export default function DevicePage({user}:Props) {
             </Link>
           ))}
         </div>
-        ) : (
+        ) : devices.length <= 0 && isLoading == true ?  (
           <div className='grid text-white text-3xl  place-items-center w-9/10 px-80 py-20 bg-gray-700 mb-80 border-2 border-dashed border-gray-500'>
             No Devices
+          </div>
+        ):(
+          <div className='grid text-white text-4xl  place-items-center w-9/10 px-80 py-20 bg-gray-700 animate-pulse text-bold mb-80 border-2 border-dashed border-gray-500'>
+            Loading...
           </div>
         )}
       </div>

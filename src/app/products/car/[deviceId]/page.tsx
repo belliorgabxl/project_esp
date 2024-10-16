@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, FormEvent } from "react";
+import { useState, useEffect } from "react";
 import mqtt, { MqttClient } from "mqtt";
 import { toast } from "react-toastify";
 
@@ -55,16 +55,17 @@ export default function CarForm({ params }: { params: { deviceId: string } }) {
   const [bw, setBW] = useState<boolean>(false);
   const [lf, setLF] = useState<boolean>(false);
   const [rt, setRT] = useState<boolean>(false);
+  const [isLoading ,setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     fetchDeviceId(deviceId).then((item: any) => {
       setDeviceData(item);
+      setLoading(true);
       setTopic(item.devicePath);
     });
     const client = mqtt.connect(
       "wss://4cff082ff4a746da91e5ff64e35e8674.s1.eu.hivemq.cloud:8884/mqtt",
       {
-        clientId: "bf71c559-1fb8-447b-b6ca-ef29315b7b67",
         username: "admin",
         password: "Bam1234!",
         protocol: "wss",

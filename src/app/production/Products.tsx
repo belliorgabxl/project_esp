@@ -19,7 +19,7 @@ export default function Products() {
       {/* for the product */}
       <div className="mx-10 grid grid-cols-[40%_60%]  my-10">
         <ProductDetail isLoading={isLoading} />
-        <div className="px-10 flex justify-center ml-5 py-5 bg-gray-600 border-gray-800 rounded-xl border-4 shadow-md h-4/5 shadow-gray-900 ">
+        <div className="px-10 flex justify-center ml-5 py-5 bg-gray-600 border-gray-800 rounded-xl border-4 shadow-md  shadow-gray-900 ">
           <CRSProducts isLoading={isLoading} />
         </div>
       </div>

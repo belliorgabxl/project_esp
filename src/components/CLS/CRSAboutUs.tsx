@@ -12,7 +12,7 @@ export default function CRSAboutUs({isLoading}:Props) {
         <Carousel 
             autoPlay={true}
             interval={2500}
-            width={1510}
+            width="full"
             infiniteLoop={true}
             showArrows={false}
             showThumbs={false}

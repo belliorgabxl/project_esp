@@ -15,7 +15,7 @@ export default function CRSProducts({ isLoading }: Props) {
       <Carousel
         autoPlay={true}
         interval={2800}
-        width={400}
+        width={600}
         infiniteLoop={true}
         showArrows={true}
         showThumbs={true}

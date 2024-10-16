@@ -112,35 +112,64 @@ export default function DocumentForm() {
               &nbsp;&nbsp;&nbsp;&nbsp;The devices in this web application are
               categorized into three types:
               <br /><br/><br/>
-              &nbsp;&nbsp;&nbsp;&nbsp;1. Car A remote-controlled car operated through the web application
-              in real-time. It allows users to control its movements and change
+              &nbsp;&nbsp;&nbsp;&nbsp;1.<span className="text-green-500 bg-gray-800 shadow-inner shadow-gray-950 px-3 py-1 text-2xl font-semibold mx-2">Car</span> A remote-controlled car operated through the web application
+              in real-time.
+              <br/>It allows users to control its movements and change
               the Wi-Fi connection settings as needed. This device is ideal for
               demonstrating real-time operations and connectivity, making it an
               excellent educational tool for children to learn through
-              interactive experiences.<br/><br/>
-              &nbsp;&nbsp;&nbsp;&nbsp;2. Robotic Arm A robotic arm that can be
+              interactive experiences.<br/><br/><div className="my-3"></div>
+              &nbsp;&nbsp;&nbsp;&nbsp;2.<span className="text-green-500 bg-gray-800 shadow-inner shadow-gray-950 px-3 py-1 text-2xl font-semibold mx-2 ">Mechanicsm Arm</span> A robotic arm that can be
               controlled through the web application in real-time, following the
               user is commands. It features precise real-time control and offers
               the flexibility to switch Wi-Fi connections according to the user
               is preferences. Like the car, this device is designed to showcase
               how real-time operations and device connectivity work, serving as
-              a useful teaching tool for children.<br/><br/>
-              &nbsp;&nbsp;&nbsp;&nbsp;3. Smart Plant Pot A plant pot
+              a useful teaching tool for children.<br/><br/><div className="my-3"></div>
+              &nbsp;&nbsp;&nbsp;&nbsp;3.<span className="text-green-500 bg-gray-800 shadow-inner shadow-gray-950 px-3 py-1 text-2xl font-semibold mx-2 ">Smart Plane Pot</span> A plant pot
               integrated with IoT technology to automate watering based on soil
               moisture levels. It can water plants automatically or be
               controlled manually via the web application. Additionally, users
               can monitor soil moisture levels and access watering statistics
               for further analysis. This device enhances plant care through
-              automation and data-driven insights.
+              automation and data-driven insights.<div className="my-3"></div>
             </div>
           </div>
 
           <div className={`my-10 w-10/12 ${isLoading ? 'animate-fadeIn':'opacity-0'}`}>
-            <h1 className="text-3xl text-white mb-5 font-semibold">Topic</h1>
+            <li className="text-3xl text-white mb-5 font-semibold">Step 1 Adding your device
+            </li>
             <div className="bg-gray-950 px-5 py-10  text-white text-2xl">
-              &nbsp;&nbsp;&nbsp;&nbsp;
+            To operate devices through the web application, you must know the <br/><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-600 px-2 text-2xl font-semibold mr-1">Serial ID </span>: of the device. The Serial ID is required when adding a new device via the "Add Device" page.
+              <br/><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-600 px-2 text-2xl font-semibold mr-1">Key Points about the Serial ID</span>
+              <li>Each device has a unique Serial ID that cannot be duplicated.</li>
+              <li>The Serial ID is essential for establishing a connection between the device and the application.</li>
+ 
+
+              <br/>
             </div>
           </div>
+          <div className={`my-10 w-10/12 ${isLoading ? 'animate-fadeIn':'opacity-0'}`}>
+            <li className="text-3xl text-white mb-5 font-semibold">Topic</li>
+            <div className="bg-gray-950 px-5 py-10  text-white text-2xl">
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-600 px-2 text-2xl font-semibold mr-1">Start with </span>:
+            </div>
+          </div>
+          <div className={`my-10 w-10/12 ${isLoading ? 'animate-fadeIn':'opacity-0'}`}>
+            <li className="text-3xl text-white mb-5 font-semibold">Topic</li>
+            <div className="bg-gray-950 px-5 py-10  text-white text-2xl">
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-600 px-2 text-2xl font-semibold mr-1">Start with </span>:
+            </div>
+          </div>
+          <div className={`my-10 w-10/12 ${isLoading ? 'animate-fadeIn':'opacity-0'}`}>
+            <li className="text-3xl text-white mb-5 font-semibold">Topic</li>
+            <div className="bg-gray-950 px-5 py-10  text-white text-2xl">
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-600 px-2 text-2xl font-semibold mr-1">Start with </span>:
+            </div>
+          </div>
+          
         </div>
       </div>
     </div>
