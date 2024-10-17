@@ -45,11 +45,11 @@ export default function AboutUsForm() {
         </div>
         <div>
           <div
-            className={`duration-1000 flex w-full justify-center animate-spin  my-5 ${
+            className={`duration-1000 flex w-full justify-center my-5 ${
               isLoading ? "px-10" : "opacity-0 h-10 px-0"
             }`}
           >
-            <div className="bg-gray-900 w-3/4 text-white px-10 py-5 rounded-lg">
+            <div className="bg-gray-900 w-3/4 text-white px-10 duration-1000 hover:px-40 py-5 rounded-lg">
               <p className="text-3xl ">Assoc.Prof.Dr. Watid Phakphisut</p>
               <p className="text-3xl mt-2">รศ.ดร.เวธิต ภาคย์พิสุทธิ์</p>
               <hr className="my-4" />

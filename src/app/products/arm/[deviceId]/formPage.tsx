@@ -35,8 +35,9 @@ export default function FormPage({ device_id }: Props) {
     const [isLoading, setLoading] = useState<boolean>(false);
     const [client, setClient] = useState<MqttClient | null>(null);
     const [isConnected, setIsConnected] = useState<boolean>(false);
-    const [topic, setTopic] = useState<string>("");
+    const [topic, setTopic] = useState<string>("esp32/arm/1011");
     const [returnedData, setReturnedLog] = useState<string>('');
+    const [deviceConnected, setDeviceConnected] = useState<string | null>(null);
 
   useEffect(() => {
     setLoading(true);
@@ -57,6 +58,21 @@ export default function FormPage({ device_id }: Props) {
         console.error("Details: ", err);
         client.end();
       });
+
+      client.on('connect', () => {
+        console.log('Connected to MQTT broker');
+        client.subscribe(topic, (err) => {
+          if (!err) {
+            console.log('Subscribed to Connected Message');
+          }
+        });
+      });
+
+      client.on('message', (topic, message) => {
+        console.log(`Received message on ${topic}: ${message}`);
+        setDeviceConnected(message.toString());
+      });
+  
       setClient(client);
       return () => {
         if (client) {
@@ -69,7 +85,10 @@ export default function FormPage({ device_id }: Props) {
     setReturnedLog(data); // Update state with returned data
     console.log("Data received from ArmJoyStick:", data);
   };
-
+  if (deviceConnected!=null){
+    console.log(deviceConnected)
+  }
+  
   return (
     <div className={`bg-gray-700 pb-60 `}>
         <div className="w-full grid place-content-center pt-3 mb-2">
@@ -79,7 +98,7 @@ export default function FormPage({ device_id }: Props) {
       <div className="grid grid-cols-[35%_65%]">
         <div className="flex justify-center px-10 py-5 w-full h-full my-5">
             <ArmPanel client={client} isConnected={isConnected} topic={topic} isLoading={isLoading} device_id={device_id}
-            device_log={returnedData}
+            device_log={returnedData} device_connect={deviceConnected}
               />
         </div>
 

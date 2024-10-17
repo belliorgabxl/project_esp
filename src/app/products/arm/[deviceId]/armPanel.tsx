@@ -9,6 +9,7 @@ type Props = {
   isConnected: boolean;
   topic: string;
   device_log: string;
+  device_connect:string | null;
 };
 
 export default function ArmPanel({
@@ -18,6 +19,7 @@ export default function ArmPanel({
   isConnected,
   topic,
   device_log,
+  device_connect,
 }: Props) {
   return (
     <div
@@ -28,14 +30,21 @@ export default function ArmPanel({
       <div className={` ${isLoading ? "animate-fadeIn" : "opacity-0"}`}>
         <div className="text-xl text-white my-1">Device Name</div>
         <p className="bg-gray-600 shadow-inner shadow-gray-950 text-center text-xl rounded-md text-white px-3 py-2">
-          Mechanism Arm
+          Mechanism Arm {topic}
         </p>
       </div>
       <div className={` ${isLoading ? "animate-fadeIn my-4" : "opacity-0"}`}>
         <span className="text-xl text-white my-1">Status : </span>
-        <span className="bg-gray-600 shadow-inner mx-3 shadow-gray-950 text-center  text-xl rounded-md text-green-500 font-bold px-10 py-2">
+        {device_connect == 'connected' ? (
+         <span className="bg-gray-600 shadow-inner mx-3 shadow-gray-950 text-center  text-xl rounded-md text-green-500 font-bold px-10 py-2">
           Connected
-        </span>
+        </span> 
+        ):(
+          <span className="bg-gray-600 shadow-inner mx-3 shadow-gray-950 text-center  text-xl rounded-md text-red-500 font-bold px-10 py-2">
+          Disconnect
+        </span> 
+        )}
+        
       </div>
       <hr className={` ${isLoading ? "animate-fadeIn my-8" : "opacity-0"}`} />
       <div className={` ${isLoading ? "animate-fadeIn " : "opacity-0"}`}>

@@ -92,11 +92,11 @@ export default function ArmJoyStick({device_id , isLoading ,client,isConnected,t
                 </div>
                 <div className={`duration-1000 grid place-items-center shadow-md shadow-gray-900  rounded-full ${isLoading? 'bg-blue-800':'bg-gray-500'} `}>
                     {hold == false ? (
-                        <button className={`active:shadow-inner active:shadow-black  text-4xl duration-75 bg-gray-800 active:bg-violet-700  shadow-md shadow-gray-900 text-white  rounded-full py-8 px-2 ${isLoading? 'animate-fadeIn':'opacity-0'} `} onClick={Hold}>
+                        <button className={`active:shadow-inner active:shadow-black text-4xl duration-75 bg-gray-800 active:bg-violet-700  shadow-md shadow-gray-900 text-white  rounded-full py-8 px-2 ${isLoading? 'animate-fadeIn':'opacity-0'} `} onClick={Hold}>
                         HOLD
                     </button>   
                     ):(
-                    <button className={`active:shadow-inner active:shadow-black  text-4xl duration-75 bg-green-600 active:bg-violet-700  shadow-md shadow-gray-900 text-white  rounded-full py-8 px-2 ${isLoading? 'animate-fadeIn':'opacity-0'} `} onClick={Hold}>
+                    <button className={`active:shadow-inner active:shadow-black text-4xl duration-75 bg-green-600 active:bg-violet-700  shadow-md shadow-gray-900 text-white  rounded-full py-8 px-2 ${isLoading? 'animate-fadeIn':'opacity-0'} `} onClick={Hold}>
                         HOLD
                     </button>  
                     )}

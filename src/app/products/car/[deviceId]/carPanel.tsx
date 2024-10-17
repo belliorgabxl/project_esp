@@ -27,7 +27,7 @@ export default function CarPanel({
     >
       <div className={` ${isLoading ? "animate-fadeIn" : "opacity-0"}`}>
         <div className="text-xl text-white my-1">Device Name</div>
-        <p className="bg-gray-600 shadow-inner shadow-gray-950 text-center text-xl rounded-md text-white px-3 py-2">
+        <p className="bg-gray-600 shadow-inner shadow-gray-950 text-center text-2xl font-semibold rounded-md text-white px-3 py-2">
           Car IoT
         </p>
       </div>
