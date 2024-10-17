@@ -36,7 +36,7 @@ export default function FormPage({ device_id }: Props) {
     const [client, setClient] = useState<MqttClient | null>(null);
     const [isConnected, setIsConnected] = useState<boolean>(false);
     const [topic, setTopic] = useState<string>("");
-
+    const [returnedData, setReturnedLog] = useState<string>('');
 
   useEffect(() => {
     setLoading(true);
@@ -65,6 +65,10 @@ export default function FormPage({ device_id }: Props) {
       };
   }, []);
 
+  const handleLogReturn = (data: string) => {
+    setReturnedLog(data); // Update state with returned data
+    console.log("Data received from ArmJoyStick:", data);
+  };
 
   return (
     <div className={`bg-gray-700 pb-60 `}>
@@ -74,11 +78,13 @@ export default function FormPage({ device_id }: Props) {
         
       <div className="grid grid-cols-[35%_65%]">
         <div className="flex justify-center px-10 py-5 w-full h-full my-5">
-            <ArmPanel client={client} isConnected={isConnected} topic={topic} isLoading={isLoading} device_id={device_id}/>
+            <ArmPanel client={client} isConnected={isConnected} topic={topic} isLoading={isLoading} device_id={device_id}
+            device_log={returnedData}
+              />
         </div>
 
         <div className="flex justify-center px-10 py-5 w-full h-full my-5">
-            <ArmJoyStick client={client} isConnected={isConnected} topic={topic} isLoading={isLoading} device_id={device_id}/>
+            <ArmJoyStick client={client} isConnected={isConnected} topic={topic} isLoading={isLoading} device_id={device_id} onLogReturn={handleLogReturn}/>
         </div>
       </div>
     </div>
