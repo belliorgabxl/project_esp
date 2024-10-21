@@ -12,7 +12,7 @@ export default function Products() {
   }, []);
 
   return (
-    <div className="w-full pb-80 bg-gray-700 py-10">
+    <div className="w-full pb-20 bg-gray-700 py-10">
       <div className="flex justify-center">
         <ProductHeader isLoading={isLoading} />
       </div>

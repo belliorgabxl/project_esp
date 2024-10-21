@@ -25,7 +25,7 @@ export default function LoginForm() {
         }
     }
   return (
-    <Card  className="w-2/5 mx-auto">
+    <Card  className="w-2/5 mx-auto shadow-lg shadow-gray-900">
         <CardHeader className="flex flex-col items-center justify-center">
             <div className="">
                 <h1 className="text-3xl font-bold text-center">Login</h1>

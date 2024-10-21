@@ -1,3 +1,4 @@
+import Footer from "@/components/footer/footer";
 import DevicePage from "./DevicePage";
 import { auth } from "@/auth";
 

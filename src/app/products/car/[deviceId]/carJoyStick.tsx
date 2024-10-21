@@ -1,5 +1,5 @@
 "use client";
-import mqtt, { MqttClient } from "mqtt";
+import { MqttClient } from "mqtt";
 import React, { useState } from "react";
 
 type Props = {
@@ -25,12 +25,7 @@ export default function CarJoyStick({
   const [rt, setRT] = useState<boolean>(false);
 
   const [toggleBtn, setToggleBtn] = useState(false);
-  const handleToggleON = () => {
-    setToggleBtn(true);
-  };
-  const handleToggleOFF = () => {
-    setToggleBtn(false);
-  };
+
   const Forward = async () => {
     if (client && isConnected) {
       if (fw == false && toggleBtn == false) {
@@ -38,13 +33,13 @@ export default function CarJoyStick({
         setFW(true);
         console.log("forward : ON");
         onLogReturn("forward : ON");
-        handleToggleON();
+        setToggleBtn(toggleBtn=>!toggleBtn);
       } else if (fw == true && toggleBtn == true) {
         client.publish(topic, "ctrl/stop");
         setFW(false);
         console.log("forward : OFF");
         onLogReturn("forward : OFF");
-        handleToggleOFF();
+        setToggleBtn(toggleBtn=>!toggleBtn);
       }
     }
   };
@@ -55,13 +50,13 @@ export default function CarJoyStick({
         setBW(true);
         console.log("backward : ON");
         onLogReturn("backward : ON");
-        handleToggleON();
+        setToggleBtn(toggleBtn=>!toggleBtn);
       } else if (bw == true && toggleBtn == true) {
         client.publish(topic, "ctrl/stop");
         setBW(false);
         console.log("backward : OFF");
         onLogReturn("backward : OFF");
-        handleToggleOFF();
+        setToggleBtn(toggleBtn=>!toggleBtn);
       }
     }
   };
@@ -72,13 +67,13 @@ export default function CarJoyStick({
         setLF(true);
         console.log("left : ON");
         onLogReturn("left : ON");
-        handleToggleON();
+        setToggleBtn(toggleBtn=>!toggleBtn);
       } else if (lf == true && toggleBtn == true) {
         client.publish(topic, "ctrl/stop");
         setLF(false);
         console.log("left : OFF");
         onLogReturn("left : OFF");
-        handleToggleOFF();
+        setToggleBtn(toggleBtn=>!toggleBtn);
       }
     }
   };
@@ -89,13 +84,13 @@ export default function CarJoyStick({
         setRT(true);
         console.log("right : ON");
         onLogReturn("right : ON");
-        handleToggleON();
+        setToggleBtn(toggleBtn=>!toggleBtn);
       } else if (rt == true && toggleBtn == true) {
         client.publish(topic, "ctrl/stop");
         setRT(false);
         console.log("right : OFF");
         onLogReturn("right : OFF");
-        handleToggleOFF();
+        setToggleBtn(toggleBtn=>!toggleBtn);
       }
     }
   };

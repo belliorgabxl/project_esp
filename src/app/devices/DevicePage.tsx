@@ -247,10 +247,10 @@ export default function DevicePage({ user }: Props) {
   };
   return (
     <div>
-      <div className={`bg-gray-800  w-full pb-80`}>
+      <div className={`bg-gray-800  w-full pb-10`}>
         <div className="flex justify-end ">
           <button
-            className="bg-blue-600 rounded-md hover:bg-slate-600  shadow-md shadow-black text-white px-10 py-4 my-5 mx-5"
+            className="bg-blue-600 rounded-md hover:bg-slate-600  shadow-md shadow-black text-white px-10 py-3 my-5 mx-5"
             onClick={onClickPopUp}
           >
             + Add Device
@@ -286,11 +286,11 @@ export default function DevicePage({ user }: Props) {
               ))}
             </div>
           ) : devices.length <= 0 && isLoading == true ? (
-            <div className="grid text-white text-3xl  place-items-center w-9/10 px-80 py-20 bg-gray-700 mb-80 border-2 border-dashed border-gray-500">
+            <div className="grid text-white text-3xl  place-items-center w-9/10 px-80 py-20 bg-gray-700 mb-20 border-2 border-dashed border-gray-500">
               No Devices
             </div>
           ) : (
-            <div className="grid text-white text-4xl  place-items-center w-9/10 px-80 py-20 bg-gray-700 animate-pulse text-bold mb-80 border-2 border-dashed border-gray-500">
+            <div className="grid text-white text-4xl  place-items-center w-9/10 px-80 py-20 bg-gray-700 animate-pulse text-bold mb-20 border-2 border-dashed border-gray-500">
               Loading...
             </div>
           )}
