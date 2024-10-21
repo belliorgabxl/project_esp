@@ -91,7 +91,8 @@ export default function FormPage({ device_id }: Props) {
     };
   }, []);
 
-    useEffect(()=>{
+
+  useEffect(()=>{
     console.log("Listen Event Start...")
     const client = mqtt.connect(
       "wss://4cff082ff4a746da91e5ff64e35e8674.s1.eu.hivemq.cloud:8884/mqtt",
@@ -117,13 +118,17 @@ export default function FormPage({ device_id }: Props) {
         console.log(`Received message on ${topic}: ${message}`);
         if (message.toString() == "connected"){
           setDeviceConnected(true)
+          console.log("Device is connected. Cleaning up...");
+          client.unsubscribe(topic);
+          client.end();
         } 
       });
+      return () => {
+        console.log("Cleaning up MQTT connection...");
+        client.unsubscribe(topic);
+        client.end();
+      };
   },[topic])
-
-
-
-  
 
   const handleLogReturn = (data: string) => {
     setReturnedLog(data);
@@ -265,7 +270,8 @@ export default function FormPage({ device_id }: Props) {
       </div>
     
 
-      <div className="grid grid-cols-[35%_65%]">
+      <div className="grid grid-cols-[10%_35%_40%_15%]">
+        <div></div>
         <div className="flex justify-center px-10 py-5 w-full h-full my-5">
           <ArmPanel
             client={client}
@@ -288,6 +294,7 @@ export default function FormPage({ device_id }: Props) {
             onLogReturn={handleLogReturn}
           />
         </div>
+        <div></div>
       </div>
     </div>
   );

@@ -86,7 +86,7 @@ export default function ArmJoyStick({
   };
 
   return (
-    <div className={`grid grid-rows-2 w-2/4 ${isLoading ? "" : ""}  `}>
+    <div className={`grid grid-rows-2 w-10/12 ${isLoading ? "" : ""}  `}>
       <div className="grid grid-cols-[50%_50%] gap-2 mb-2">
         <div
           className={` duration-1000 text-2xl grid place-items-center py-5 shadow-md  shadow-gray-900 text-white w-full rounded-lg  ${
