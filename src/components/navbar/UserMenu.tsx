@@ -25,7 +25,8 @@ export default function UserMenu({user}:Props) {
         <DropdownMenu variant='flat' aria-label='User Action Menu'>
             <DropdownSection showDivider>
                 <DropdownItem isReadOnly as='span' className='h-14 flex flex-row text-2xl font-bold' aria-label='Username'>
-                    Signed in as {user?.name}
+                    Signed in as : {user?.name}<br/>
+                    Email : {user?.email}
                 </DropdownItem>
             </DropdownSection>
             <DropdownSection>

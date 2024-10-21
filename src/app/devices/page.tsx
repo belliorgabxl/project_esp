@@ -1,9 +1,11 @@
-import DevicePage from './DevicePage';
+import DevicePage from "./DevicePage";
+import { auth } from "@/auth";
 
-export default function devices() {
+export default async function devices() {
+  const session = await auth();
   return (
     <div>
-        <DevicePage/>
+      <DevicePage user={session?.user} />
     </div>
-  )
+  );
 }

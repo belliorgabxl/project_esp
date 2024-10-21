@@ -1,7 +1,8 @@
 export const publicRoutes = [
     '/',
     '/documents',
-    '/aboutus'
+    '/aboutus',
+    '/production'
 ];
 export const authRoutes = [
     '/login',

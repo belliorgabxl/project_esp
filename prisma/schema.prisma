@@ -33,3 +33,4 @@ model User {
   image String?
   accounts Account[]
 }
+

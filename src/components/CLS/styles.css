@@ -1,0 +1,10 @@
+/* styles.css */
+.carousel .slide {
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+  }
+  
+  .carousel .slide.selected {
+    opacity: 1;
+  }
+  

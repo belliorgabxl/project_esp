@@ -40,7 +40,6 @@ export default function WifiForm() {
             toast.success("wi-fi changed.")
             console.log(`wfn:${wfn},wfp:${wfp}`)
             client.publish('esp32/car/control', `wfn:${wfn},wfp:${wfp}`);
-            //  wfn:abcd,wfp:1235678
         }else{
             toast.error("wait to connecting...")
         }

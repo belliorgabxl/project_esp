@@ -1,14 +1,15 @@
-import Link from "next/link";
+import Homepage_article from "@/components/article/homePageDetail";
+import CLShomepage from "@/components/CLS/CLShomepage";
 
 export default function Home() {
   return (
-    <div className=" w-full h-screen bg-gray-700" >
-      <div className="flex justify-center pt-32">
-        <Link href="/devices" className=" px-14 text-3xl text-white bg-gradient-to-r from-gray-800 to-blue-600  py-5
-        rounded-2xl shadow-lg animate-pulse shadow-gray-950 hover:px-20 duration-500 ">
-          GetStart
-        </Link>
+    <div className=" w-full pb-40 bg-[url('/assets/bghome.jpg')]">
+      <div className="flex justify-center">
+        <div className="bg-gray-800 mb-5">
+          <CLShomepage />
+        </div>
       </div>
+      <Homepage_article />
     </div>
   );
 }
