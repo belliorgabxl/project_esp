@@ -45,7 +45,6 @@ export default function CarForm({ params }: { params: { deviceId: string } }) {
   const [wifiName, setWifiName] = useState<string>();
   const [wifiPW, setWifiPW] = useState<string>();
   const [wifiData, setWifiData] = useState<WifiData>();
-
   const [popUp_clearWifi , setPopUpclearWifi] = useState<boolean>();
 
   const [client, setClient] = useState<MqttClient | null>(null);

@@ -1,8 +1,10 @@
-import React from 'react'
-import AboutUsForm from './aboutUsForm'
+import React from "react";
+import AboutUsForm from "./aboutUsForm";
 
 export default function aboutUs() {
   return (
-    <div><AboutUsForm/></div>
-  )
+    <div>
+      <AboutUsForm />
+    </div>
+  );
 }

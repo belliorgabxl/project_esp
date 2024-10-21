@@ -76,7 +76,7 @@ export default function AboutUsForm() {
             Telecommunication
           </h1>
         </div>
-        <AboutUsPage_article isLoading={isLoading}/>
+        <AboutUsPage_article isLoading={isLoading} />
       </div>
     </div>
   );

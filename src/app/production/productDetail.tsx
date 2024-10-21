@@ -48,7 +48,7 @@ export default function ProductDetail({ isLoading }: Props) {
         </div>
         <div className="px-5 grid">
           <h1 className="text-xl  bg-gray-600 px-5 grid place-items-center py-2  rounded-md shadow-md shadow-gray-900">
-            Product : Mechanic Arm
+            Product : Robotic Arm
           </h1>
           <p className="mt-2 text-lg">Board : ESP32</p>
           <p>Connection Type : Wi-fi 2.4 GHz</p>

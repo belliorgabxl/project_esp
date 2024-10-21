@@ -1,16 +1,14 @@
 import connectMongoDB from "@/lib/mongodb";
-import Device from "@/models/device"
+import Device from "@/models/device";
 import { NextResponse } from "next/server";
-
 
 export async function GET(request, { params }) {
   const { userId } = params;
   await connectMongoDB();
-  
-  const devices = await Device.find({deviceOwner:userId });
-  return NextResponse.json( devices, { status: 200 });
-}
 
+  const devices = await Device.find({ deviceOwner: userId });
+  return NextResponse.json(devices, { status: 200 });
+}
 
 // export async function PUT(request, { params }) {
 //   const { id } = params;
@@ -19,4 +17,3 @@ export async function GET(request, { params }) {
 //   await Topic.findByIdAndUpdate(id, { title, description });
 //   return NextResponse.json({ message: "Topic updated" }, { status: 200 });
 // }
-

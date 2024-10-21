@@ -119,7 +119,7 @@ export default function DocumentForm() {
               demonstrating real-time operations and connectivity, making it an
               excellent educational tool for children to learn through
               interactive experiences.<br/><br/><div className="my-3"></div>
-              &nbsp;&nbsp;&nbsp;&nbsp;2.<span className="text-green-500 bg-gray-800 shadow-inner shadow-gray-950 px-3 py-1 text-2xl font-semibold mx-2 ">Mechanicsm Arm</span> A robotic arm that can be
+              &nbsp;&nbsp;&nbsp;&nbsp;2.<span className="text-green-500 bg-gray-800 shadow-inner shadow-gray-950 px-3 py-1 text-2xl font-semibold mx-2 ">Robotic Arm</span> A robotic arm that can be
               controlled through the web application in real-time, following the
               user is commands. It features precise real-time control and offers
               the flexibility to switch Wi-Fi connections according to the user
