@@ -225,7 +225,7 @@ export default function FormPage({ device_id }: Props) {
     }
   };
   return (
-    <div className={`bg-gray-700 pb-60 `}>
+    <div className={`bg-gray-700 pb-10 `}>
       <div className=" flex justify-center pt-3 mb-2">
         <div className=" mx-3 w-1/5 px-10 py-4 text-2xl text-white"></div>
         <span className="w-full grid place-content-center ">

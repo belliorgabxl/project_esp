@@ -232,7 +232,7 @@ export default function FormPage({ device_id }: Props) {
   };
 
   return (
-    <div className={`bg-gray-700 pb-60 `}>
+    <div className={`bg-gray-700 pb-10 `}>
       <div className=" flex justify-center pt-3 mb-2">
         <div className=" mx-3 w-1/5 px-10 py-4 text-2xl text-white"></div>
         <span className="w-full grid place-content-center ">
@@ -296,6 +296,102 @@ export default function FormPage({ device_id }: Props) {
         </div>
         <div></div>
       </div>
+      {popUp_click == true && (
+        <div
+          className="fixed inset-0 flex items-center duration-1000 animate-appearance-in justify-center bg-gray-200 bg-opacity-45"
+          onClick={onClosePopUp}
+        >
+          <div
+            className="bg-gray-800 shadow-lg shadow-gray-950  px-12 py-10 rounded-lg w-3/10 z-100 grid place-items-center duration-500"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h1 className="text-white text-3xl text-center shadow-md shadow-black bg-gray-900 rounded-md px-10 py-2 w-3/5">
+              Wi-fi Setup
+            </h1>
+            <div className="px-5 pt-10 grid space-y-10 w-4/5">
+              <div className="grid grid-cols-2">
+                <label className="text-white text-xl ">Wi-fi Name : </label>
+                <input
+                  type="text"
+                  className="pl-2 py-1 rounded-lg shadow-inner shadow-black bg-gray-500 text-white text-xl"
+                  name="wf_name"
+                  defaultValue={wifiData?.wifiName}
+                  onChange={(e) => {
+                    setWifiName(e.target.value);
+                  }}
+                  value={wifiName}
+                />
+              </div>
+              <div className="grid grid-cols-2">
+                <label className="text-white text-xl">Password : </label>
+                <input
+                  name="wf_pw"
+                  type="text"
+                  className="pl-2 py-1 shadow-inner shadow-black rounded-lg bg-gray-500 text-white text-xl"
+                  defaultValue={wifiData?.wifiPassword}
+                  onChange={(e) => {
+                    setWifiPW(e.target.value);
+                  }}
+                  value={wifiPW}
+                />
+              </div>
+              <div className="flex justify-center w-full gap-5">
+                <button
+                  onClick={handleWifiEdit}
+                  className="text-white bg-blue-600 px-14 py-2 rounded-md hover:bg-gray-200 hover:text-black shadow-md  text-xl shadow-gray-900 duration-1000"
+                >
+                  Change
+                </button>
+                <button
+                  onClick={onClosePopUp}
+                  className="bg-gray-600 shadow-md px-14 hover:bg-gray-800 py-2 rounded-md shadow-gray-900 text-white font-bold text-xl duration-1000 "
+                >
+                  Cancel
+                </button>
+              </div>
+              {wifiData?.status == "Change" && (
+                <div className="flex justify-center">
+                  <button
+                    className="bg-gray-200 text-black text-lg px-5 py-2 rounded-md hover:bg-red-500 hover:text-white duration-500"
+                    onClick={()=>setPopUpclearWifi(popUp_clearWifi=>!popUp_clearWifi)}
+                  >
+                    Clear to default Wi-fi
+                  </button>
+                </div>
+              )}
+            </div>
+            {popUp_clearWifi == true && (
+              <div
+                className="fixed inset-0 flex items-center justify-center bg-gray-200 bg-opacity-35"
+                onClick={()=>setPopUpclearWifi(popUp_clearWifi=>!popUp_clearWifi)}
+              >
+                <div
+                  className="bg-gray-800 px-12 py-5 rounded-lg w-1/5 z-110 duration-500  shadow-lg shadow-gray-950 "
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <h1 className="text-center text-white text-2xl py-4">
+                    Confirm set to default Wi-Fi
+                  </h1>
+                  <div className="flex justify-center w-full my-3 gap-5">
+                    <button
+                      onClick={handleClearDefaultWifi}
+                      className="text-white  bg-blue-600 px-6 py-2 rounded-md hover:bg-gray-200 shadow-md  text-xl hover:text-black shadow-gray-900 duration-1000"
+                    >
+                      Yes
+                    </button>
+                    <button
+                      onClick={()=>setPopUpclearWifi(popUp_clearWifi=>!popUp_clearWifi)}
+                      className="bg-gray-600 shadow-md px-6 hover:bg-gray-800 py-2 rounded-md shadow-gray-900 text-white  text-xl duration-1000"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -57,11 +57,11 @@ export default function FormPage({ device_id }: Props) {
   const [deviceConnected, setDeviceConnected] = useState<boolean>(false);
 
   useEffect(() => {
-    // fetchDeviceId(deviceId).then((item: any) => {
-    //   setDeviceData(item);
-    //   setLoading(true);
-    //   setTopic(item.devicePath);
-    // });
+    fetchDeviceId(deviceId).then((item: any) => {
+      setDeviceData(item);
+      setLoading(true);
+      setTopic(item.devicePath);
+    });
     setLoading(true);
     const client = mqtt.connect(
       "wss://4cff082ff4a746da91e5ff64e35e8674.s1.eu.hivemq.cloud:8884/mqtt",
@@ -220,7 +220,7 @@ export default function FormPage({ device_id }: Props) {
     }
   };
   return (
-    <div className={`bg-gray-700 pb-60 `}>
+    <div className={`bg-gray-700 pb-10 `}>
       <div className=" flex justify-center pt-3 mb-2">
         <div className=" mx-3 w-1/5 px-10 py-4 text-2xl text-white"></div>
         <span className="w-full grid place-content-center ">
