@@ -4,6 +4,10 @@ import mqtt, { MqttClient } from "mqtt";
 import { toast } from "react-toastify";
 import PumpJoyStick from "./pumpJoyStick";
 import PumpPanel from "./pumpPanel";
+import { Doughnut } from "react-chartjs-2";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+ChartJS.register(ArcElement, Tooltip, Legend);
+
 type Props = {
   device_id: string;
 };
@@ -55,6 +59,46 @@ export default function FormPage({ device_id }: Props) {
   const [popUp_clearWifi, setPopUpclearWifi] = useState<boolean>();
   const [deviceData, setDeviceData] = useState<DeviceData>();
   const [deviceConnected, setDeviceConnected] = useState<boolean>(false);
+
+  let data= [
+    {
+      label: "dirt",
+      value: 55,
+      color: "rgba(0, 43, 73, 1)",
+      cutout: "50%",
+    },
+    {
+      label: "ค่าความชื้น",
+      value:15,
+      color: "rgba(0, 103, 160, 1)",
+      cutout: "50%",
+    },
+    {
+      label: "air",
+      value: 80,
+      color: "rgba(83, 217, 217, 1)",
+      cutout: "50%",
+    },
+  ]
+  
+    const options: any = {
+      plugins: {
+        responsive: true,
+      },
+      cutout: data.map((item) => item.cutout),
+    };
+    const finalData = {
+      labels: data.map((item) => item.label),
+      datasets: [
+        {
+          data: data.map((item) => Math.round(item.value)),
+          backgroundColor: data.map((item) => item.color),
+          borderColor: data.map((item) => item.color),
+          borderWidth: 1,
+          dataVisibility: new Array(data.length).fill(true),
+        },
+      ],
+    };
 
   useEffect(() => {
     fetchDeviceId(deviceId).then((item: any) => {
@@ -271,7 +315,7 @@ export default function FormPage({ device_id }: Props) {
           />
         </div>
 
-        <div className="flex  justify-center ml-10 px-10 py-5 w-full h-full my-5">
+        <div className="justify-center ml-10 px-10 py-5 w-full h-full my-5">
           <PumpJoyStick
             isConnected={isConnected}
             client={client}
@@ -280,6 +324,7 @@ export default function FormPage({ device_id }: Props) {
             device_id={deviceId}
             onLogReturn={getLogReturned}
           />
+          <div className="bg-black rounded-lg grid place-items-center my-2 "><Doughnut data={finalData} options={options} /></div>
         </div>
         <div></div>
       </div>
