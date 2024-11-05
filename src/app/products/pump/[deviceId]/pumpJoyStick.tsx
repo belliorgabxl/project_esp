@@ -33,9 +33,11 @@ export default function PumpJoyStick({
       if (pump_state == false) {
         client.publish(topic, "ctrl/on");
         console.log("on");
+        onLogReturn("ON");
       } else {
         client.publish(topic, "ctrl/off");
         console.log("off")
+        onLogReturn("OFF");
       }
     }
   };

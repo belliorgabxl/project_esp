@@ -43,7 +43,7 @@ const fetchWifiId = async (wifiId: string) => {
 };
 
 export default function FormPage({ device_id }: Props) {
-  const deviceId = device_id
+  const deviceId = device_id;
   const [isLoading, setLoading] = useState<boolean>(false);
   const [client, setClient] = useState<MqttClient | null>(null);
   const [isConnected, setIsConnected] = useState<boolean>(false);
@@ -55,8 +55,8 @@ export default function FormPage({ device_id }: Props) {
   const [wifiData, setWifiData] = useState<WifiData>();
   const [popUp_clearWifi, setPopUpclearWifi] = useState<boolean>();
   const [deviceData, setDeviceData] = useState<DeviceData>();
-  const [topic, setTopic] = useState<string >('');
-  const [deviceConnected , setDeviceConnected] = useState<boolean>(false);
+  const [topic, setTopic] = useState<string>("");
+  const [deviceConnected, setDeviceConnected] = useState<boolean>(false);
 
   useEffect(() => {
     fetchDeviceId(deviceId).then((item: any) => {
@@ -91,9 +91,8 @@ export default function FormPage({ device_id }: Props) {
     };
   }, []);
 
-
-  useEffect(()=>{
-    console.log("Listen Event Start...")
+  useEffect(() => {
+    console.log("Listen Event Start...");
     const client = mqtt.connect(
       "wss://4cff082ff4a746da91e5ff64e35e8674.s1.eu.hivemq.cloud:8884/mqtt",
       {
@@ -102,39 +101,38 @@ export default function FormPage({ device_id }: Props) {
         protocol: "wss",
       }
     );
-      console.log("is connecting...")
-      client.on("connect", () => {
-        if (topic != null) {
-          client.subscribe(topic, (err) => {
-            if (!err) {
-              console.log("Subscribed to Connected Message");
-            }
-          });
-        } else {
-          console.log("none topic");
-        }
-      });
-      client.on("message", (topic, message) => {
-        console.log(`Received message on ${topic}: ${message}`);
-        if (message.toString() == "connected"){
-          setDeviceConnected(true)
-          console.log("Device is connected. Cleaning up...");
-          client.unsubscribe(topic);
-          client.end();
-        } 
-      });
-      return () => {
-        console.log("Cleaning up MQTT connection...");
+    console.log("is connecting...");
+    client.on("connect", () => {
+      if (topic != null) {
+        client.subscribe(topic, (err) => {
+          if (!err) {
+            console.log("Subscribed to Connected Message");
+          }
+        });
+      } else {
+        console.log("none topic");
+      }
+    });
+    client.on("message", (topic, message) => {
+      console.log(`Received message on ${topic}: ${message}`);
+      if (message.toString() == "connected") {
+        setDeviceConnected(true);
+        console.log("Device is connected. Cleaning up...");
         client.unsubscribe(topic);
         client.end();
-      };
-  },[topic])
+      }
+    });
+    return () => {
+      console.log("Cleaning up MQTT connection...");
+      client.unsubscribe(topic);
+      client.end();
+    };
+  }, [topic]);
 
   const handleLogReturn = (data: string) => {
     setReturnedLog(data);
     console.log("Data received from ArmJoyStick:", data);
   };
-  
 
   const onClickPopUp = async () => {
     setPopUpClick(true);
@@ -178,6 +176,8 @@ export default function FormPage({ device_id }: Props) {
         if (response.ok) {
           toast.success("wi-fi Cleared !!");
           onClosePopUpClearWifi();
+          setWifiName("Default");
+          setWifiPW("12345678");
           onClosePopUp();
         } else {
           toast.error("something went wrong.");
@@ -268,7 +268,6 @@ export default function FormPage({ device_id }: Props) {
           Wi-fi setting
         </button>
       </div>
-    
 
       <div className="grid grid-cols-[10%_35%_40%_15%]">
         <div></div>
@@ -353,7 +352,9 @@ export default function FormPage({ device_id }: Props) {
                 <div className="flex justify-center">
                   <button
                     className="bg-gray-200 text-black text-lg px-5 py-2 rounded-md hover:bg-red-500 hover:text-white duration-500"
-                    onClick={()=>setPopUpclearWifi(popUp_clearWifi=>!popUp_clearWifi)}
+                    onClick={() =>
+                      setPopUpclearWifi((popUp_clearWifi) => !popUp_clearWifi)
+                    }
                   >
                     Clear to default Wi-fi
                   </button>
@@ -363,7 +364,9 @@ export default function FormPage({ device_id }: Props) {
             {popUp_clearWifi == true && (
               <div
                 className="fixed inset-0 flex items-center justify-center bg-gray-200 bg-opacity-35"
-                onClick={()=>setPopUpclearWifi(popUp_clearWifi=>!popUp_clearWifi)}
+                onClick={() =>
+                  setPopUpclearWifi((popUp_clearWifi) => !popUp_clearWifi)
+                }
               >
                 <div
                   className="bg-gray-800 px-12 py-5 rounded-lg w-1/5 z-110 duration-500  shadow-lg shadow-gray-950 "
@@ -380,7 +383,9 @@ export default function FormPage({ device_id }: Props) {
                       Yes
                     </button>
                     <button
-                      onClick={()=>setPopUpclearWifi(popUp_clearWifi=>!popUp_clearWifi)}
+                      onClick={() =>
+                        setPopUpclearWifi((popUp_clearWifi) => !popUp_clearWifi)
+                      }
                       className="bg-gray-600 shadow-md px-6 hover:bg-gray-800 py-2 rounded-md shadow-gray-900 text-white  text-xl duration-1000"
                     >
                       Cancel

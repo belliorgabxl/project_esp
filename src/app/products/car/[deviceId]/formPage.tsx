@@ -171,6 +171,8 @@ export default function FormPage({ device_id }: Props) {
         );
         if (response.ok) {
           toast.success("wi-fi Cleared !!");
+          setWifiName("Default")
+          setWifiPW("12345678")
           onClosePopUp();
           setPopUpclearWifi(popUp_clearWifi=>!popUp_clearWifi)
         } else {
