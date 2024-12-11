@@ -3,6 +3,7 @@ import "./globals.css";
 import Providers from "@/components/Providers";
 import TopNav from "@/components/navbar/TopNav";
 import Footer from "@/components/footer/footer";
+import { MqttProvider } from "./connect/MqttContext";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,7 +21,7 @@ export default function RootLayout({
       <Providers>
         <TopNav/>
         <main className="">
-          {children}
+          <MqttProvider>{children}</MqttProvider>
         </main>
         <Footer/>
       </Providers>
@@ -28,3 +29,6 @@ export default function RootLayout({
     </html>
   );
 }
+
+
+

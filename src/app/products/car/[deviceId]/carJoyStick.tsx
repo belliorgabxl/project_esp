@@ -138,20 +138,14 @@ export default function CarJoyStick({
         }  `}
       >
         <div className="flex">
-        <button
+        {/* <button
             onClick={JoinLeft}
             className={`rounded-full text-sm   shadow-md shadow-gray-800 px-5 py-3 active:shadow-inner active:shadow-black  active:bg-purple-500  ${
               isLoading ? "bg-blue-700" : "bg-gray-500"
             } ${jlf == true ? "bg-green-500" : ""}`}
           >JLF
-            {/* <img
-              className={` ${isLoading ? "animate-fadeIn" : "opacity-0"}`}
-              src="/images/forwardWhite.png"
-              height={50}
-              width={50}
-              alt="logo"
-            /> */}
-          </button>
+           
+          </button> */}
           <button
             onClick={Forward}
             className={`rounded-full mx-5 shadow-md shadow-gray-800 px-3 py-3 active:shadow-inner active:shadow-black  active:bg-purple-500  ${
@@ -166,20 +160,14 @@ export default function CarJoyStick({
               alt="logo"
             />
           </button>
-          <button
+          {/* <button
             onClick={JoinRight}
             className={`rounded-full text-sm shadow-md shadow-gray-800 px-5 py-3 active:shadow-inner active:shadow-black  active:bg-purple-500  ${
               isLoading ? "bg-blue-700" : "bg-gray-500"
             } ${jrt == true ? "bg-green-500" : ""}`}
           >JRT
-            {/* <img
-              className={` ${isLoading ? "animate-fadeIn" : "opacity-0"}`}
-              src="/images/forwardWhite.png"
-              height={50}
-              width={50}
-              alt="logo"
-            /> */}
-          </button>
+          
+          </button> */}
         </div>
 
         <div className="flex gap-5">

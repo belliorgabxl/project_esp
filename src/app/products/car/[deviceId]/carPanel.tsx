@@ -1,6 +1,7 @@
 "use client";
+import MqttContext from "@/app/connect/MqttContext";
 import mqtt, { MqttClient } from "mqtt";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 type Props = {
   device_id: string;
@@ -20,6 +21,7 @@ export default function CarPanel({
   device_log,
   device_connect,
 }: Props) {
+  const { connectionStatus, lastMessage , deviceStatus } = useContext(MqttContext);
   return (
     <div
       className={`duration-1000 gap-2  ml-5 shadow-md shadow-gray-900 bg-gradient-to-tr px-5 w-full from-blue-950 to-gray-800 rounded-lg ${
@@ -34,7 +36,7 @@ export default function CarPanel({
       </div>
       <div className={`my-4 ${isLoading ? "animate-fadeIn " : "opacity-0"}`}>
         <span className="text-xl text-white my-1">Status : </span>
-        {device_connect? (
+        {deviceStatus == "online"? (
           <span className="bg-gray-600 shadow-inner mx-3 shadow-gray-950 text-center  text-xl rounded-md text-green-400 font-bold px-10 py-2">
             Connected
           </span>
