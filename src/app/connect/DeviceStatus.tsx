@@ -8,7 +8,7 @@ const DeviceStatus: React.FC = () => {
 
   return (
     <div>
-    <h1>Device Connection Status</h1>
+    <h1>Cloud Connection Status</h1>
     <p>Status: {connectionStatus}</p>
     <div className="text-xl">
     Last Message :

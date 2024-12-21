@@ -131,21 +131,13 @@ export default function CarJoyStick({
   };
 
   return (
-    <div className={`grid grid-rows-2 w-full ${isLoading ? "" : ""}  `}>
+    <div className={`grid w-full ${isLoading ? "" : ""}  `}>
       <div
         className={`duration-1000 text-2xl shadow-md shadow-gray-900 text-white w-full rounded-2xl py-5 px-5 grid place-items-center ${
           isLoading ? " bg-blue-800" : "bg-gray-500"
         }  `}
       >
         <div className="flex">
-        {/* <button
-            onClick={JoinLeft}
-            className={`rounded-full text-sm   shadow-md shadow-gray-800 px-5 py-3 active:shadow-inner active:shadow-black  active:bg-purple-500  ${
-              isLoading ? "bg-blue-700" : "bg-gray-500"
-            } ${jlf == true ? "bg-green-500" : ""}`}
-          >JLF
-           
-          </button> */}
           <button
             onClick={Forward}
             className={`rounded-full mx-5 shadow-md shadow-gray-800 px-3 py-3 active:shadow-inner active:shadow-black  active:bg-purple-500  ${
@@ -160,14 +152,7 @@ export default function CarJoyStick({
               alt="logo"
             />
           </button>
-          {/* <button
-            onClick={JoinRight}
-            className={`rounded-full text-sm shadow-md shadow-gray-800 px-5 py-3 active:shadow-inner active:shadow-black  active:bg-purple-500  ${
-              isLoading ? "bg-blue-700" : "bg-gray-500"
-            } ${jrt == true ? "bg-green-500" : ""}`}
-          >JRT
-          
-          </button> */}
+        
         </div>
 
         <div className="flex gap-5">
