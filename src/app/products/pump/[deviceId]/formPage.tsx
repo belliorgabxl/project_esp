@@ -62,15 +62,15 @@ export default function FormPage({ device_id }: Props) {
 
   const [dirtValue,setDirtValue] = useState<string>('');
 
-  let Dvalue = ''
-  let chartA = 50
-  let chartB = 0
-  let chartC = 50
-  if (dirtValue.startsWith("value")){
-    Dvalue = dirtValue.split(": ")[1];
-    chartB = parseInt(Dvalue, 10);
-  } 
-  let data= [
+  const Dvalue = ''
+  const chartA = 50
+  const chartB = 0
+  const chartC = 50
+  // if (dirtValue.startsWith("value")){
+  //   Dvalue = dirtValue.split(": ")[1];
+  //   chartB = parseInt(Dvalue, 10);
+  // } 
+  const data= [
     {
       label: "air",
       value: chartA - (chartB-20),
@@ -203,9 +203,9 @@ export default function FormPage({ device_id }: Props) {
     if (client && isConnected) {
       client.publish(topic, `defaultwifi`);
       try {
-        let newWifiName = "Default";
-        let newWifiPassword = "12345678";
-        let newStatus = "none";
+        const newWifiName = "Default";
+        const newWifiPassword = "12345678";
+        const newStatus = "none";
         const response = await fetch(
           `http://localhost:3000/api/wifi/${wifiData?._id}`,
           {
@@ -244,9 +244,9 @@ export default function FormPage({ device_id }: Props) {
         console.log(`wfn:${wfn},wfp:${wfp}`);
         client.publish(topic, `wfn:${wfn},wfp:${wfp}`);
         try {
-          let newWifiName = wifiName;
-          let newWifiPassword = wifiPW;
-          let newStatus = "Change";
+          const newWifiName = wifiName;
+          const newWifiPassword = wifiPW;
+          const newStatus = "Change";
           const response = await fetch(
             `http://localhost:3000/api/wifi/${wifiData?._id}`,
             {

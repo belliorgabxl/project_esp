@@ -156,9 +156,9 @@ export default function FormPage({ device_id }: Props) {
     if (client && isConnected) {
       client.publish(topic, `defaultwifi`);
       try {
-        let newWifiName = "Default";
-        let newWifiPassword = "12345678";
-        let newStatus = "none";
+    const newWifiName = "Default";
+        const newWifiPassword = "12345678";
+        const newStatus = "none";
         const response = await fetch(
           `http://localhost:3000/api/wifi/${wifiData?._id}`,
           {
@@ -197,9 +197,9 @@ export default function FormPage({ device_id }: Props) {
         console.log(`wfn:${wfn},wfp:${wfp}`);
         client.publish(topic, `wfn:${wfn},wfp:${wfp}`);
         try {
-          let newWifiName = wifiName;
-          let newWifiPassword = wifiPW;
-          let newStatus = "Change";
+      const newWifiName = wifiName;
+          const newWifiPassword = wifiPW;
+          const newStatus = "Change";
           const response = await fetch(
             `http://localhost:3000/api/wifi/${wifiData?._id}`,
             {

@@ -102,12 +102,12 @@ export default function DevicePage({ user }: Props) {
     console.log("Products : ", products);
     console.log("find by : ", product_id);
 
-    let productId_list: string[] = [];
-    let productPath_list: string[] = [];
-    let status_list: string[] = [];
-    let productType_list: string[] = [];
-    let productPassword_list: string[] = [];
-    let IdProduct_list: string[] = [];
+    const productId_list: string[] = [];
+    const productPath_list: string[] = [];
+    const status_list: string[] = [];
+    const productType_list: string[] = [];
+    const productPassword_list: string[] = [];
+    const IdProduct_list: string[] = [];
 
     let productPath = "";
     let productPasswords = "";
