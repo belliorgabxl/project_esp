@@ -13,10 +13,7 @@ type Props = {
 };
 
 export default function ArmPanel({
-  device_id,
   isLoading,
-  client,
-  isConnected,
   topic,
   device_log,
   device_connect,

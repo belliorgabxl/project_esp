@@ -12,7 +12,7 @@ export default function AboutUsForm() {
     setLoading(true);
   }, []);
   return (
-    <div className="w-full pb-40  bg-gray-700">
+    <div className="w-full pb-10  bg-gray-700">
       <div className="grid place-items-center pb-20">
         <div className="shadow-lg shadow-gray-800">
           <CRSAboutUs isLoading={isLoading} />

@@ -1,6 +1,7 @@
 "use client";
+import MqttContext from "@/app/connect/MqttContext";
 import mqtt, { MqttClient } from "mqtt";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 type Props = {
   device_id: string;
@@ -12,14 +13,12 @@ type Props = {
   device_connect: boolean;
 };
 export default function CarPanel({
-  device_id,
   isLoading,
-  client,
-  isConnected,
   topic,
   device_log,
-  device_connect,
 }: Props) {
+  const { connectionStatus, deviceStatus } =
+    useContext(MqttContext);
   return (
     <div
       className={`duration-1000 gap-2  ml-5 shadow-md shadow-gray-900 bg-gradient-to-tr px-5 w-full from-blue-950 to-gray-800 rounded-lg ${
@@ -28,24 +27,67 @@ export default function CarPanel({
     >
       <div className={` ${isLoading ? "animate-fadeIn" : "opacity-0"}`}>
         <div className="text-xl text-white my-1">Device Name</div>
-        <p className="bg-gray-600 shadow-inner shadow-gray-950 text-center text-2xl font-semibold rounded-md text-white px-3 py-2">
+        <p className="bg-gray-600 shadow-inner shadow-gray-950 text-center text-xl font-semibold rounded-md text-white px-10 w-4/5 py-2">
           Car IoT
         </p>
       </div>
-      <div className={`my-4 ${isLoading ? "animate-fadeIn " : "opacity-0"}`}>
-        <span className="text-xl text-white my-1">Status : </span>
-        {device_connect? (
-          <span className="bg-gray-600 shadow-inner mx-3 shadow-gray-950 text-center  text-xl rounded-md text-green-400 font-bold px-10 py-2">
+      <div
+        className={`my-4 flex justify-between ${
+          isLoading ? "animate-fadeIn " : "opacity-0"
+        }`}
+      >
+        <span className="text-xl text-white my-1">Action Type : </span>
+          <span className="bg-gray-600 shadow-inner mx-3 shadow-gray-950 text-center  text-xl rounded-md text-white h-fit line-clamp-1 px-10 py-2">
+            Transmitter
+          </span>
+
+      </div>
+     
+
+      <div
+        className={`my-2 lg:flex justify-between md:flex grid gap-2  ${
+          isLoading ? "animate-fadeIn" : "opacity-0"
+        }`}
+      >
+        <div className="text-xl text-white my-1 h-fit line-clamp-1">
+          Cloud Connection :
+        </div>
+        {connectionStatus == "Connected" ? (
+          <span className="bg-gray-600 shadow-inner mx-3 shadow-gray-950 text-center  text-xl rounded-md text-green-400 h-fit line-clamp-1 font-semibold px-10 py-2">
+            Connected
+          </span>
+        ) : connectionStatus == "Disconnected" ? (
+          <span className="bg-gray-600 shadow-inner mx-3 shadow-gray-950 text-center  text-xl rounded-md text-red-500 h-fit line-clamp-1 font-semibold px-10 py-2">
+            Disconnect
+          </span>
+        ) : (
+          <span className="bg-gray-600 shadow-inner mx-3 shadow-gray-950 text-center  text-xl rounded-md text-white h-fit line-clamp-1 font-semibold px-10 py-2">
+            Reconnect
+          </span>
+        )}
+      </div>
+      <div
+        className={`my-4 flex justify-between ${
+          isLoading ? "animate-fadeIn " : "opacity-0"
+        }`}
+      >
+        <span className="text-xl text-white my-1">Device Status : </span>
+        {deviceStatus == "online" ? (
+          <span className="bg-gray-600 shadow-inner mx-3 shadow-gray-950 text-center  text-xl rounded-md text-green-400 font-bold h-fit line-clamp-1 px-10 py-2">
             Connected
           </span>
         ) : (
-          <span className="bg-gray-600 shadow-inner mx-3 shadow-gray-950 text-center  text-xl rounded-md text-red-500 font-bold px-10 py-2">
+          <span className="bg-gray-600 shadow-inner mx-3 shadow-gray-950 text-center  text-xl rounded-md text-red-500 h-fit line-clamp-1 font-bold px-10 py-2">
             Disconnect
           </span>
         )}
       </div>
-      <div className={`my-5 ${isLoading ? "animate-fadeIn " : "opacity-0"}`}>
-        <span className="text-xl text-white my-1">Topic :  </span>
+      <div
+        className={`my-5 flex justify-between ${
+          isLoading ? "animate-fadeIn " : "opacity-0"
+        }`}
+      >
+        <span className="text-xl text-white my-1">Topic : </span>
         <span className="bg-gray-600 shadow-inner mx-3 shadow-gray-950 text-center  text-xl rounded-md text-white  px-10 py-2">
           {topic}
         </span>

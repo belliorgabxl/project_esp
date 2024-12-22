@@ -1,5 +1,5 @@
 "use client";
-import mqtt, { MqttClient } from "mqtt";
+import { MqttClient } from "mqtt";
 import React, { useState } from "react";
 
 type Props = {
@@ -23,14 +23,8 @@ export default function CarJoyStick({
   const [bw, setBW] = useState<boolean>(false);
   const [lf, setLF] = useState<boolean>(false);
   const [rt, setRT] = useState<boolean>(false);
-
   const [toggleBtn, setToggleBtn] = useState(false);
-  const handleToggleON = () => {
-    setToggleBtn(true);
-  };
-  const handleToggleOFF = () => {
-    setToggleBtn(false);
-  };
+
   const Forward = async () => {
     if (client && isConnected) {
       if (fw == false && toggleBtn == false) {
@@ -38,13 +32,13 @@ export default function CarJoyStick({
         setFW(true);
         console.log("forward : ON");
         onLogReturn("forward : ON");
-        handleToggleON();
+        setToggleBtn((toggleBtn) => !toggleBtn);
       } else if (fw == true && toggleBtn == true) {
         client.publish(topic, "ctrl/stop");
         setFW(false);
         console.log("forward : OFF");
         onLogReturn("forward : OFF");
-        handleToggleOFF();
+        setToggleBtn((toggleBtn) => !toggleBtn);
       }
     }
   };
@@ -55,13 +49,13 @@ export default function CarJoyStick({
         setBW(true);
         console.log("backward : ON");
         onLogReturn("backward : ON");
-        handleToggleON();
+        setToggleBtn((toggleBtn) => !toggleBtn);
       } else if (bw == true && toggleBtn == true) {
         client.publish(topic, "ctrl/stop");
         setBW(false);
         console.log("backward : OFF");
         onLogReturn("backward : OFF");
-        handleToggleOFF();
+        setToggleBtn((toggleBtn) => !toggleBtn);
       }
     }
   };
@@ -72,13 +66,13 @@ export default function CarJoyStick({
         setLF(true);
         console.log("left : ON");
         onLogReturn("left : ON");
-        handleToggleON();
+        setToggleBtn((toggleBtn) => !toggleBtn);
       } else if (lf == true && toggleBtn == true) {
         client.publish(topic, "ctrl/stop");
         setLF(false);
         console.log("left : OFF");
         onLogReturn("left : OFF");
-        handleToggleOFF();
+        setToggleBtn((toggleBtn) => !toggleBtn);
       }
     }
   };
@@ -89,39 +83,45 @@ export default function CarJoyStick({
         setRT(true);
         console.log("right : ON");
         onLogReturn("right : ON");
-        handleToggleON();
+        setToggleBtn((toggleBtn) => !toggleBtn);
       } else if (rt == true && toggleBtn == true) {
         client.publish(topic, "ctrl/stop");
         setRT(false);
         console.log("right : OFF");
         onLogReturn("right : OFF");
-        handleToggleOFF();
+        setToggleBtn((toggleBtn) => !toggleBtn);
       }
     }
   };
+  
+ 
 
   return (
-    <div className={`grid grid-rows-2 w-full ${isLoading ? "" : ""}  `}>
+    <div className={`grid w-full ${isLoading ? "" : ""}  `}>
       <div
         className={`duration-1000 text-2xl shadow-md shadow-gray-900 text-white w-full rounded-2xl py-5 px-5 grid place-items-center ${
           isLoading ? " bg-blue-800" : "bg-gray-500"
         }  `}
       >
-        <button
-          onClick={Forward}
-          className={`rounded-full mx-5 shadow-md shadow-gray-800 px-3 py-3 active:shadow-inner active:shadow-black  active:bg-purple-500  ${
-            isLoading ? "bg-blue-700" : "bg-gray-500"
-          } ${fw == true ? "bg-green-500" : ""}`}
-        >
-          <img
-            className={` ${isLoading ? "animate-fadeIn" : "opacity-0"}`}
-            src="/images/forwardWhite.png"
-            height={50}
-            width={50}
-            alt="logo"
-          />
-        </button>
         <div className="flex">
+          <button
+            onClick={Forward}
+            className={`rounded-full mx-5 shadow-md shadow-gray-800 px-3 py-3 active:shadow-inner active:shadow-black  active:bg-purple-500  ${
+              isLoading ? "bg-blue-700" : "bg-gray-500"
+            } ${fw == true ? "bg-green-500" : ""}`}
+          >
+            <img
+              className={` ${isLoading ? "animate-fadeIn" : "opacity-0"}`}
+              src="/images/forwardWhite.png"
+              height={50}
+              width={50}
+              alt="logo"
+            />
+          </button>
+        
+        </div>
+
+        <div className="flex gap-5">
           <button
             onClick={Left}
             className={`rounded-full mx-5 shadow-md shadow-gray-800 px-3 py-3 active:shadow-inner active:shadow-black   active:bg-purple-500  ${

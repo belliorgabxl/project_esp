@@ -8,7 +8,7 @@ import UserMenu from './UserMenu'
 export default async function TopNav() {
     const session = await auth();
   return (
-    <Navbar maxWidth='xl' className='bg-gradient-to-r  from-blue-600 to-gray-900 shadow-sm shadow-gray-900'
+    <Navbar  className='bg-gradient-to-r w-full  from-blue-600 to-gray-900 shadow-sm shadow-gray-900'
     classNames={ {
       item: [
         'text-xl',
@@ -27,6 +27,7 @@ export default async function TopNav() {
         <NavLink href='/documents' label='Document'/>
         <NavLink href='/production' label="Products"/>
         <NavLink href='/devices' label='Device'/>
+        <NavLink href='/dashboard' label='Dashboard'/>
         <NavLink href='/aboutus' label='About Us'/>
         {/* <NavLink href='/wifiSetup' label='Wi-fi Setup'/> */}
       </NavbarContent>

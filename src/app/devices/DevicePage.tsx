@@ -1,5 +1,4 @@
 "use client";
-import { randomUUID } from "crypto";
 import { Session } from "next-auth";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -103,12 +102,12 @@ export default function DevicePage({ user }: Props) {
     console.log("Products : ", products);
     console.log("find by : ", product_id);
 
-    let productId_list: string[] = [];
-    let productPath_list: string[] = [];
-    let status_list: string[] = [];
-    let productType_list: string[] = [];
-    let productPassword_list: string[] = [];
-    let IdProduct_list: string[] = [];
+    const productId_list: string[] = [];
+    const productPath_list: string[] = [];
+    const status_list: string[] = [];
+    const productType_list: string[] = [];
+    const productPassword_list: string[] = [];
+    const IdProduct_list: string[] = [];
 
     let productPath = "";
     let productPasswords = "";
@@ -123,7 +122,7 @@ export default function DevicePage({ user }: Props) {
       productPassword_list.push(items.productPassword);
       IdProduct_list.push(items._id);
     });
-    //check products storage data
+
     for (let i = 0; i < productId_list.length; i++) {
       if (String(product_id) == productId_list[i]) {
         if (status_list[i] == "none") {
@@ -247,10 +246,10 @@ export default function DevicePage({ user }: Props) {
   };
   return (
     <div>
-      <div className={`bg-gray-800  w-full pb-80`}>
+      <div className={`bg-gray-800  w-full pb-10`}>
         <div className="flex justify-end ">
           <button
-            className="bg-blue-600 rounded-md hover:bg-slate-600  shadow-md shadow-black text-white px-10 py-4 my-5 mx-5"
+            className="bg-blue-600 rounded-md hover:bg-slate-600  shadow-md shadow-black text-white px-10 py-3 my-5 mx-5"
             onClick={onClickPopUp}
           >
             + Add Device
@@ -258,39 +257,39 @@ export default function DevicePage({ user }: Props) {
         </div>
         <div className="flex justify-center pt-5 mb-20">
           {devices.length > 0 && isLoading == true ? (
-            <div className="grid grid-cols-3 gap-5 w-9/10  px-20 py-10 bg-gray-700 border-2 border-dotted border-gray-500">
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-4 lg:w-11/12  lg:px-10 px-4 py-5 md:w-9/12 sm:w-9/12 w-full sm:px-10 bg-gray-700 border-2 border-dotted border-gray-500">
               {devices?.map((item: DeviceData) => (
                 <Link
                   href={"/products/" + item.deviceType + "/" + item.deviceId}
                   key={item.deviceId}
-                  className="px-7 py-8 bg-gradient-to-tl from-gray-800 to-blue-600 text-white rounded-lg shadow-lg shadow-black duration-500   hover:bg-gradient-to-br hover:shadow-black hover:shadow-xl  hover:from-blue-500 hover:to-gray-800"
+                  className="px-7 py-8 bg-gradient-to-tl from-gray-800 to-blue-600 text-white rounded-lg shadow-lg shadow-black duration-500   hover:bg-gradient-to-br hover:shadow-black hover:shadow-xl w-full  hover:from-blue-500 hover:to-gray-800"
                 >
                   <div className="text-2xl font-bold bg-gray-800 rounded-md shadow-md shadow-gray-800 px-5 py-3 w-4/5 text-slate-300">
                     {item.deviceType.toUpperCase()}
                   </div>
                   <div className="my-6">
-                    <span className="font-bold text-2xl text-white">
-                      Device Name :
+                    <span className="font-bold text-xl text-white">
+                      Name :
                     </span>
-                    <span className="text-white mx-4 bg-gray-500 rounded-md shadow-inner shadow-gray-800 py-2 text-xl px-6">
+                    <span className="text-white mx-4 bg-gray-500 rounded-md shadow-inner shadow-gray-800 py-1 text-xl px-6">
                       {item.deviceName ?? "Loading..."}
                     </span>
                   </div>
-                  <div className="my-6">
-                    <span className="font-bold text-2xl text-white ">ID :</span>
-                    <span className="text-white mx-4 bg-gray-500 rounded-md shadow-inner shadow-gray-800 py-2 text-xl px-6">
-                      {item.deviceId.slice(0, 20) ?? "Loading"}...
+                  <div className=" flex my-6">
+                    <span className="font-bold text-xl text-white ">ID :</span>
+                    <span className="text-white mx-4 bg-gray-500 rounded-md shadow-inner shadow-gray-800 h-fit py-1 text-xl w-[250px] line-clamp-1 px-6">
+                      {item.deviceId ?? "Loading"}
                     </span>
                   </div>
                 </Link>
               ))}
             </div>
           ) : devices.length <= 0 && isLoading == true ? (
-            <div className="grid text-white text-3xl  place-items-center w-9/10 px-80 py-20 bg-gray-700 mb-80 border-2 border-dashed border-gray-500">
+            <div className="grid text-white text-3xl  place-items-center w-9/10 px-80 py-20 bg-gray-700 mb-20 border-2 border-dashed border-gray-500">
               No Devices
             </div>
           ) : (
-            <div className="grid text-white text-4xl  place-items-center w-9/10 px-80 py-20 bg-gray-700 animate-pulse text-bold mb-80 border-2 border-dashed border-gray-500">
+            <div className="grid text-white text-4xl  place-items-center w-9/10 px-80 py-20 bg-gray-700 animate-pulse text-bold mb-20 border-2 border-dashed border-gray-500">
               Loading...
             </div>
           )}
@@ -298,63 +297,68 @@ export default function DevicePage({ user }: Props) {
       </div>
       {popUp_click == true && (
         <div
-          className="fixed duration-1000 animate-appearance-in inset-0 flex items-center justify-center bg-gray-200 bg-opacity-35"
+          className="fixed duration-1000 animate-appearance-in inset-0 flex items-center justify-center bg-gray-700 bg-opacity-45"
           onClick={onClosePopUp}
         >
           <div
-            className="bg-gray-800 px-12 py-14 rounded-lg w-2/5 z-100 shadow-lg shadow-gray-950 "
+            className="bg-gray-800 lg:px-12 pl-20 px-10 md:px-10 py-5 lg:py-10 rounded-lg w-9/12 md:w-3/5 sm:w-3/5 lg:w-2/5 z-100 shadow-lg shadow-gray-950 "
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="text-2xl  text-white text-center grid ">
+            <div className="justify-center lg:text-3xl text-white font-semibold text-2xl">
+              Add You Device
+            </div>
+            <div className="text-xl grid md:flex sm:flex lg:flex gap-3  text-white md:text-center sm:text-center lg:text-center my-5 ">
+              <div className="py-2">
+                Type: 
+              </div>
               <select
                 id="addDevice"
                 onChange={handleChangeType}
-                className="bg-gray-500 border-2 w-3/5 px-5 py-3 border-black rounded-md"
+                className="bg-gray-500 border-2 h-fit w-3/5 px-5 py-2 border-black rounded-md line-clamp-1"
               >
                 <option value="None">None-selected</option>
-                <option value="car">Car</option>
-                <option value="pump">Pump</option>
-                <option value="robotic arm">Robotic Arm</option>
-                <option value="camera">Camera</option>
+                <option value="transmitter">Transmitter</option>
+                <option value="reciever">Reciever</option>
+                <option value="hybrid">Hybrid</option>
               </select>
             </div>
-            <div className="my-10">
-              <label className="text-2xl text-white mx-3 ">Device Name :</label>
+            <div className="lg:flex md:flex sm:flex grid gap-3 md:text-center sm:text-center lg:text-center    my-5">
+              <label className="text-xl py-2 h-fit line-clamp-1 text-white ">Device Name :</label>
               <input
                 type="text"
                 onChange={handleChangeName}
                 value={device_name}
-                className=" text-2xl text-white  bg-gray-500 rounded-md py-3 px-2 w-2/5"
+                className=" text-xl text-white lg:w-2/5 bg-gray-500 rounded-md py-2 px-2 w-3/5"
               />
             </div>
-            <div className="my-10">
-              <label className="text-2xl text-white mx-3 ">Serial ID :</label>
+            <div className="my-5 lg:flex grid gap-3 md:flex sm:flex md:text-center sm:text-center lg:text-center ">
+              <label className="text-xl text-white py-2 ">Serial ID :</label>
               <input
                 type="text"
                 onChange={(e) => setProductId(e.target.value)}
                 value={product_id}
-                className=" text-2xl text-white  bg-gray-500 rounded-md py-3 px-2 w-2/5"
+                className=" text-xl text-white lg:w-2/5 bg-gray-500 rounded-md py-2 px-2 w-3/5"
               />
             </div>
-            <div className="flex justify-normal">
+            <div className="flex pt-4 gap-5 w-full justify-center ">
               {loading_state == false ? (
                 <button
                   onClick={() => {
                     addDeviceSubmit();
                   }}
-                  className="bg-blue-600 hover:bg-blue-900 text-white text-xl px-5 py-4 rounded-md mx-10"
+                  className="bg-blue-600 hover:bg-blue-900 text-white text-xl px-5 py-2 h-fit rounded-md lg:mx-10"
                 >
                   Submit
                 </button>
               ) : (
-                <div>
+                <div className="">
                   <button
                     disabled
-                    className="bg-blue-600 hover:bg-blue-900 text-white text-xl px-6 py-4 rounded-md mx-10 flex"
+                    className="bg-blue-600 hover:bg-blue-900 text-white text-xl px-6 py-2 rounded-md h-fit lg:mx-10 flex"
                   >
                     <svg
                       aria-hidden="true"
-                      className="w-6 h-6 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                      className="w-4 h-4 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
                       viewBox="0 0 100 101"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -371,10 +375,10 @@ export default function DevicePage({ user }: Props) {
                     <span className="pl-2">Submit</span>
                   </button>
                 </div>
-              )}
-
+              )}   
+   
               <button
-                className="bg-red-500 hover:bg-red-700 mx-10 text-white text-xl px-5 py-4 rounded-md"
+                className="bg-red-500 h-fit hover:bg-red-700 lg:mx-10 text-white text-xl px-5 py-2 rounded-md"
                 onClick={onClosePopUp}
               >
                 Cancel
