@@ -22,9 +22,6 @@ const DeviceStatus: React.FC = () => {
         </div>
       ) }
     </div>
-
-    
-    
   </div>
   );
 };

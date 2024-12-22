@@ -95,40 +95,8 @@ export default function CarJoyStick({
       }
     }
   };
-  const JoinLeft = () => {
-    if (client && isConnected) {
-      if (jlf == false && toggleBtn == false) {
-        client.publish(topic, "ctrl/joinleft");
-        setJLF(true);
-        console.log("joinleft : ON");
-        onLogReturn("joinleft : ON");
-        setToggleBtn((toggleBtn) => !toggleBtn);
-      } else if (jlf == true && toggleBtn == true) {
-        client.publish(topic, "ctrl/stop");
-        setJLF(false);
-        console.log("joinleft : OFF");
-        onLogReturn("joinleft : OFF");
-        setToggleBtn((toggleBtn) => !toggleBtn);
-      }
-    }
-  };
-  const JoinRight = () => {
-    if (client && isConnected) {
-      if (jrt == false && toggleBtn == false) {
-        client.publish(topic, "ctrl/joinright");
-        setJRT(true);
-        console.log("joinright : ON");
-        onLogReturn("joinright : ON");
-        setToggleBtn((toggleBtn) => !toggleBtn);
-      } else if (jrt == true && toggleBtn == true) {
-        client.publish(topic, "ctrl/stop");
-        setJRT(false);
-        console.log("joinright : OFF");
-        onLogReturn("joinright : OFF");
-        setToggleBtn((toggleBtn) => !toggleBtn);
-      }
-    }
-  };
+  
+ 
 
   return (
     <div className={`grid w-full ${isLoading ? "" : ""}  `}>
