@@ -13,10 +13,7 @@ type Props = {
   dirtValue:string | null;
 };
 export default function PumpPanel({
-  device_id,
   isLoading,
-  client,
-  isConnected,
   topic,
   device_log,
   device_connect,

@@ -14,12 +14,10 @@ import React, { useState } from "react";
 export default function PumpJoyStick({
   isLoading,
   onLogReturn,
-  device_id,
   client,
   isConnected,
   topic,
 }: Props) {
-  const [isToggled, setIsToggled] = useState(false);
   const [pump_state, setPumpState] = useState(false);
 
   const onPump = async () => {

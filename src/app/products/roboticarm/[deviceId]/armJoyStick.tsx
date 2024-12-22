@@ -12,19 +12,12 @@ type Props = {
 };
 
 export default function ArmJoyStick({
-  device_id,
   isLoading,
   client,
   isConnected,
   topic,
   onLogReturn,
 }: Props) {
-  const [fw, setFW] = useState<boolean>(false);
-  const [bw, setBW] = useState<boolean>(false);
-  const [lf, setLF] = useState<boolean>(false);
-  const [rt, setRT] = useState<boolean>(false);
-  const [up, setUp] = useState<boolean>(false);
-  const [down, setDown] = useState<boolean>(false);
   const [hold, setHold] = useState<boolean>(false);
 
   const Forward = async () => {

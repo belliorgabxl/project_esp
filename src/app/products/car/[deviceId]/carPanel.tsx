@@ -13,15 +13,11 @@ type Props = {
   device_connect: boolean;
 };
 export default function CarPanel({
-  device_id,
   isLoading,
-  client,
-  isConnected,
   topic,
   device_log,
-  device_connect,
 }: Props) {
-  const { connectionStatus, lastMessage, deviceStatus } =
+  const { connectionStatus, deviceStatus } =
     useContext(MqttContext);
   return (
     <div

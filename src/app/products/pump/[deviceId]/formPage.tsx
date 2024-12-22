@@ -62,7 +62,6 @@ export default function FormPage({ device_id }: Props) {
 
   const [dirtValue,setDirtValue] = useState<string>('');
 
-  const Dvalue = ''
   const chartA = 50
   const chartB = 0
   const chartC = 50

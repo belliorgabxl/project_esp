@@ -23,8 +23,6 @@ export default function CarJoyStick({
   const [bw, setBW] = useState<boolean>(false);
   const [lf, setLF] = useState<boolean>(false);
   const [rt, setRT] = useState<boolean>(false);
-  const [jlf, setJLF] = useState<boolean>(false);
-  const [jrt, setJRT] = useState<boolean>(false);
   const [toggleBtn, setToggleBtn] = useState(false);
 
   const Forward = async () => {
