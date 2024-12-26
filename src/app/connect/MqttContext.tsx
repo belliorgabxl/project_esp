@@ -6,7 +6,7 @@ import mqtt, { MqttClient } from "mqtt";
 interface MqttContextProps {
   client: MqttClient | null;
   connectionStatus: "Connected" | "Disconnected" | "Reconnecting";
-  lastMessage: string | null; // To store the latest message from the topic
+  lastMessage: string | null; 
   deviceStatus:string | null;
 }
 
@@ -17,8 +17,17 @@ const MqttContext = createContext<MqttContextProps>({
   deviceStatus:null,
 });
 
-export const MqttProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  // const topic = "esp32/car/1012"
+interface MqttProviderProps {
+  children: ReactNode;
+  topic_device: string; 
+}
+
+
+export const MqttProvider: FC<MqttProviderProps> = ({ children, topic_device }) => {
+  const [topic_devices , setTopic] = useState<string>(topic_device)
+
+  
+
   const [client, setClient] = useState<MqttClient | null>(null);
   const [connectionStatus, setConnectionStatus] = useState<
     "Connected" | "Disconnected" | "Reconnecting"
@@ -40,7 +49,7 @@ export const MqttProvider: FC<{ children: ReactNode }> = ({ children }) => {
   
     mqttClient.on("connect", () => {
       setConnectionStatus("Connected");
-      mqttClient.subscribe("esp32/car/1012", (err) => {
+      mqttClient.subscribe(topic_devices, (err) => {
         if (err) {
           console.error("Failed to subscribe to topic", err);
         }
@@ -48,7 +57,7 @@ export const MqttProvider: FC<{ children: ReactNode }> = ({ children }) => {
     });
   
     mqttClient.on("message", (topic, message) => {
-      if (topic == "esp32/car/1012") {
+      if (topic == topic_devices) {
         const statusMessage = message.toString();
         console.log("log test at line 50 : ",statusMessage);
         if (statusMessage === "online") {
@@ -59,7 +68,7 @@ export const MqttProvider: FC<{ children: ReactNode }> = ({ children }) => {
           timeout = setTimeout(() => {
             setConnectionStatus("Disconnected");
             setDeviceStatus("Disconnect")
-          }, 6000); 
+          }, 4000); 
         }
       }
     });

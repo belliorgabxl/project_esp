@@ -8,6 +8,8 @@ import React from "react";
 import PressButton from "@/components/button/pressButton";
 import ToggelButton from "@/components/button/toggleButton";
 import ToggleRecieve from "@/components/button/toggleRecieve";
+import { CirclePlus, Wrench } from "lucide-react";
+
 
 type Props = {
   device_id: string;
@@ -248,14 +250,14 @@ export default function FormPage({ device_id }: Props) {
           <h1
             className={`duration-1000 py-3 ${
               isLoading
-                ? "px-14 text-3xl text-white shadow-md shadow-gray-950 bg-gray-800 rounded-md"
+                ? "px-14 text-3xl text-white  bg-gray-800 rounded-2xl"
                 : "px-0 text-gray-700 "
             } line-clamp-1 h-fit`}
           >
             Car Controller
           </h1>
           <button
-            className={`flex justify-center gap-4  mx-3 w-fit h-fit  py-2 text-xl rounded-lg  shadow-md shadow-gray-900 active:shadow-inner active:shadow-black   hover:bg-blue-400 hover:text-black ${
+            className={`flex justify-center gap-4  mx-3 w-fit h-fit  py-2 text-xl rounded-2xl  shadow-sm shadow-gray-800 active:shadow-inner active:shadow-black   hover:bg-blue-400 hover:text-black ${
               isLoading
                 ? "px-5 text-white bg-blue-600"
                 : "px-0 bg-blue-300 text-blue-300"
@@ -281,7 +283,8 @@ export default function FormPage({ device_id }: Props) {
       </div>
       <div className=" grid gap-10 place-items-center px-10 lg:flex lg:justify-center md:flex md:justify-center items-start   border-2 border-dashed border-gray-400 shadow-md shadow-gray-800 py-10 rounded-md lg:h-fit">
         <div className="lg:flex md:flex justify-center hidden    w-full lg:w-fit lg:py-5  ">
-          <CarPanel
+          {topic && (
+            <CarPanel
             isConnected={isConnected}
             client={client}
             topic={topic}
@@ -290,6 +293,8 @@ export default function FormPage({ device_id }: Props) {
             device_log={returnedLog}
             device_connect={deviceConnected}
           />
+          )}
+          
         </div>
         <div className="grid gap-4   lg:h-fit px-10 lg:py-5 w-fit">
           <div className="flex justify-start gap-3">
@@ -301,15 +306,19 @@ export default function FormPage({ device_id }: Props) {
               } h-fit text-xl   w-[150px] shadow-md hover:bg-gray-500 shadow-gray-700  px-5 py-1 rounded-2xl`}
               onClick={handleChangeAdjust}
             >
-              {adjust ? <p>Default</p> : <p>Custom</p>}
+              {adjust ? <div className="">Default</div> : <div className="flex items-center justify-center gap-2"><Wrench style={{width:"1.4rem",height:'1.4rem'}} className="mt-1"/>Custom</div>}
             </button>
             <button
               className={` ${
-                adjust ? "block animate-fadeIn" : "hidden"
-              } bg-white text-blue-700 font-semibold px-5 w-[150px] h-fit line-clamp-1 overflow-hidden text-lg shadow-md shadow-gray-700 hover:bg-gray-500 hover:text-white py-1 rounded-2xl`}
+                adjust ? "block animate-fastFade" : "hidden"
+              } bg-white text-blue-700 font-semibold px-5 w-[150px] h-fit line-clamp-1 overflow-hidden text-lg shadow-md shadow-gray-700  hover:bg-gray-500 hover:text-white py-1 justify-end rounded-2xl`}
               onClick={() => setPopUpBtn(!popup_btn)}
             >
-              Add Button
+              <CirclePlus style={{width:"1.4rem",height:'1.4rem'}} className="absolute -translate-x-2 translate-y-[3px]"/>
+              <div className="translate-x-3">
+                Add Button
+              </div>
+              
             </button>
           </div>
           {!adjust ? (
@@ -322,13 +331,13 @@ export default function FormPage({ device_id }: Props) {
               onLogReturn={getLogReturned}
             />
           ) : (
-            <div className="animate-fadeIn">
+            <div className="animate-fastFade">
               {buttons.length > 0 ? (
                 <div className="border-2 border-dashed grid grid-cols-2 px-10 py-5 rounded-lg gap-2  w-full ">
                   {buttons.map((item) => (
                     <div>
                       {item.buttonType == "transmitter" ? (
-                        <div className="animate-fadeIn grid place-items-center w-full">
+                        <div className="animate-fastFade grid place-items-center w-full">
                           {item.buttonCategory == "press" ? (
                             <PressButton
                               category={item.buttonCategory}
@@ -597,6 +606,10 @@ const PopUpBtn = ({ setPopUpBtn, setButtons }: PopUpBtnProps) => {
       buttonCommand,
     };
     setButtons((prevButtons) => [...prevButtons, newButton]);
+    setButtonCategory('')
+    setButtonLabel('')
+    setButtonCommand('')
+    setButtonType('')
     setPopUpBtn(false);
   };
 
@@ -655,7 +668,7 @@ const PopUpBtn = ({ setPopUpBtn, setButtons }: PopUpBtnProps) => {
         </div>
         <div
           className={` ${
-            selectedType == "transmitter" ? "animate-fadeIn" : "hidden"
+            selectedType == "transmitter" ? "animate-fastFade" : "hidden"
           } lg:flex  grid my-2 w-full  gap-5  `}
         >
           <button
@@ -672,7 +685,7 @@ const PopUpBtn = ({ setPopUpBtn, setButtons }: PopUpBtnProps) => {
               <div>Default Command</div>
             )}
           </button>
-          <div className={` ${!config_cmd && selectedType == "transmitter" ? "animate-fadeIn" : "hidden"}`}>
+          <div className={` ${!config_cmd && selectedType == "transmitter" ? "animate-fastFade" : "hidden"}`}>
             <select className="px-2 py-1 rounded-md bg-gray-500 text-white"
             onChange={(e) => setButtonCommand(e.target.value)}>
               <option selected>select command</option>
@@ -690,7 +703,7 @@ const PopUpBtn = ({ setPopUpBtn, setButtons }: PopUpBtnProps) => {
 
         <div
           className={` ${
-            config_cmd ? "animate-fadeIn" : "hidden"
+            config_cmd ? "animate-fastFade" : "hidden"
           } flex my-2 w-full justify-start gap-2`}
         >
           <label className="text-white">Command: </label>
