@@ -4,100 +4,116 @@ import React from "react";
 
 export default function FooterDetail() {
   return (
-    <>
-      <div className=" my-4 grid grid-cols-[45%_20%_35%]">
-        <div className="grid gap-5 w-full grid-cols-[30%_70%]">
-          <img
-            src="/images/iconweb_white.png"
-            width={100}
-            height={100}
-            alt="icon"
-          />
-          <div className="grid w-4/5">
-            <p className="text-white text-xl font-bold">
-              TELECOME IoT Web Application
-            </p>
-            <p className="text-gray-200 text-xl">
-              สำหรับจัดการอุปกรณ์ Internet of Thing
-            </p>
-            <p className="text-white text-xl font-bold">Our University</p>
-            <p className="text-gray-200 text-xl">
-              King Mongkut's Institute of Technology Ladkrabang
-            </p>
-          </div>
-        </div>
-        <div className="border-l-2 pl-10 grid place-items-center gap-2">
-          <div className="grid h-full">
-            <div className="text-xl font-bold text-white">Help</div>
-            <Link
-              href="/aboutus"
-              className="text-gray-200 text-xl hover:text-gray-800"
-            >
-              About Us
-            </Link>
-            <Link
-              href="/documents"
-              className="text-gray-200 text-xl hover:text-gray-800"
-            >
-              Tutorial
-            </Link>
-            <Link
-              href="/documents"
-              className="text-gray-200 text-xl hover:text-gray-800"
-            >
-              Documentation
-            </Link>
-            <Link
-              href="/"
-              className="text-gray-200 text-xl hover:text-gray-800"
-            >
-              Objective
-            </Link>
-          </div>
-        </div>
-        <div className="border-l-2 pl-10 ">
-          <div className="text-xl text-white font-bold text-center">
-            Contact Us
-          </div>
-          <div className="my-2 flex gap-10 justify-center text-xl text-gray-200 ">
-            <div>091-864-9154</div> | 
-            <div>095-343-0364</div>
-          </div>
-          <div className="flex my-3">
+    <div className="text-white py-5 bg-gray-900 flex items-center">
+      <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
+
+
+        <div className="flex flex-col">
+          <div className="flex items-center gap-3">
             <img
-              src="/general/facebook.png"
-              width={40}
-              height={40}
-              className="mx-5"
+              src="/images/iconweb_white.png"
+              width={80}
+              height={80}
               alt="icon"
             />
-            <div className="text-xl text-gray-200 text-start pt-1 ">
-              Facebook: Telecom KMITL
+            <div>
+              <h1 className="text-4xl font-bold">IoT</h1>
+              <p className="text-sm">Web Application for IoT Device Management</p>
             </div>
           </div>
-          <div className="flex my-3">
-            <img src="/general/instagram.png"
-            width={40}
-            height={40} className="mx-5"
-            alt="icon"/>  
-              <div className="text-xl text-gray-200 text-start pt-1 ">
-              Instagram : telecom.kmitl
-            </div>  
-            </div>
+          <div className="mt-6">
+            <h2 className="text-2xl font-bold">Contact</h2>
+            <p>King Mongkut's Institute of Technology Ladkrabang.</p>
+            <p>1 Chalong Krung 1 Alley, Lat Krabang, Bangkok 10520, Thailand</p>
+          </div>
+          <div className="mt-6 text-2xl font-bold space-y-4">
+            <a href="/aboutus" className="hover:text-gray-300">About Us</a>
+            <a
+              href="https://github.com/belliorgabxl/project_esp"
+              className="flex items-center gap-2 text-sm hover:text-gray-300"
+            >
+              <img src="/images/github.png" alt="GitHub" width={50} height={50} />
+              GitHub Source code
+            </a>
+            <a
+              className="flex items-center gap-2 text-sm hover:text-gray-300"
+            >
+              <img src="/images/mail.png" alt="Mail" width={50} height={50} />
+              64010153@kmitl.ac.th
+            </a>
+            <a
+              className="flex items-center gap-2 text-sm hover:text-gray-300"
+            >
+              <img src="/images/discord.png" alt="Discord" width={50} height={50} />
+              Community 
+            </a>
+          </div>
+        </div>
+
+
+        <div>
+          <h1 className="text-2xl font-bold">Get Started</h1>
+          <ul className="mt-2 space-y-2">
+            <li>
+              <a href="/register" className="hover:text-gray-300">Register</a>
+            </li>
+            <li>
+              <a href="/login" className="hover:text-gray-300">Log In</a>
+            </li>
+          </ul>        
+          <div>
+            <h2 className="mt-6 text-2xl font-bold">Product</h2>
+            <ul className="mt-4 space-y-2">
+              <li>Robot Car</li>
+              <li>Robotic Arm</li>
+              <li>Plant Watering Devices</li>
+              <li>Smoke detector</li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="mt-6 text-2xl font-bold">Device Control</h3>
+            <ul className="mt-4 space-y-2">
+              <li>Robot Car</li>
+              <li>Robotic Arm</li>
+              <li>Plant Watering Devices</li>
+              <li>Smoke detector</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="flex flex-col">
+          <h1 className="text-2xl font-bold">Main Features</h1>
+          <ul className="mt-4 space-y-2">
+            <li>IoT device connectivity</li>
+            <li>IoT device management</li>
+            <li>Real-time control and operation</li>
+            <li>Wi-Fi connection configuration</li>
+          </ul>
+          <div>
+            <h2 className="mt-6 text-2xl font-bold">Help</h2>
+            <ul className="mt-4 space-y-2">
+              <li>
+                <a href="/documents" className="hover:text-gray-300">Document</a>
+              </li>
+              <li>
+                <a href="/documents" className="hover:text-gray-300">Change Wi-Fi Network</a>
+              </li>
+              <li>
+                <a href="/documents" className="hover:text-gray-300">Connection Status</a>
+              </li>
+              <li>
+                <a href="/documents" className="hover:text-gray-300">What is Serial ID</a>
+              </li>
+              <li>
+                <a href="/documents" className="hover:text-gray-300">How to Connect a Device to the Web Application</a>
+              </li>
+              <li>
+                <a href="/documents" className="hover:text-gray-300">Unable to Control the Device?</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-      <div className="flex my-4">
-        <div className="flex">
-          <p className="text-white underline text-xl mx-2 font-semibold ">
-            Copyright 2024
-          </p>
-          <p className="text-gray-300 text-xl mt-1">
-            by Telecommunication. All Rights Reserved. IoT is Powered by
-            telecom.vercel.app
-          </p>
-        </div>
-        <div></div>
-      </div>
-    </>
+    </div>
   );
 }
