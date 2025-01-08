@@ -18,11 +18,13 @@ export default function AboutUsForm() {
           <CRSAboutUs isLoading={isLoading} />
         </div>
         <h1
-          className={`text-4xl bg-gray-800 my-5  py-6 text-center duration-1000 hover:bg-gray-900 text-white ${
-            isLoading ? "px-80" : "px-10"
+          className={` duration-1000 my-3 font-extrabold text-gray-900 dark:text-white  text-6xl ${
+            isLoading ? "animate-fadeIn" : ""
           }`}
         >
-          About us
+          <span className="text-transparent bg-clip-text bg-gradient-to-r to-blue-500 via-emerald-200 from-sky-400">
+            About us
+          </span>
         </h1>
         <div className="w-full px-10 flex justify-start">
           <h1

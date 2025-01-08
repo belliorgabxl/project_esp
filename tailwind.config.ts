@@ -18,6 +18,7 @@ const config: Config = {
       },
       animation: {
         fadeIn: 'fadeIn 2s ease-in-out',
+        fastFade : 'fadeIn 1s ease-in-out',
       },
       colors: {
         background: "var(--background)",

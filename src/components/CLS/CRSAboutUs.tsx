@@ -15,7 +15,7 @@ export default function CRSAboutUs({ isLoading }: Props) {
     >
       <Carousel
         autoPlay={true}
-        interval={2500}
+        interval={4000}
         width="full"
         infiniteLoop={true}
         showArrows={false}

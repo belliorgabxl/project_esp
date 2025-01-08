@@ -1,20 +1,17 @@
 "use client";
+import React from "react";
 import { useState, useEffect } from "react";
 import mqtt, { MqttClient } from "mqtt";
 import { toast } from "react-toastify";
-import CarJoyStick from "./carJoyStick";
-import CarPanel from "./carPanel";
-import React from "react";
 import PressButton from "@/components/button/pressButton";
 import ToggelButton from "@/components/button/toggleButton";
 import ToggleRecieve from "@/components/button/toggleRecieve";
 import { CirclePlus, Wrench } from "lucide-react";
-
+import Panel from "./Panel";
 
 type Props = {
   device_id: string;
 };
-
 type ButtonProps = {
   id: number;
   buttonType: string;
@@ -55,14 +52,14 @@ const fetchWifiId = async (wifiId: string) => {
   return ressponse.json();
 };
 
-export default function FormPage({ device_id }: Props) {
+export default function Form({ device_id }: Props) {
   const deviceId = device_id;
   const [client, setClient] = useState<MqttClient | null>(null);
   const [isConnected, setIsConnected] = useState<boolean>(false);
   const [topic, setTopic] = useState<string>("");
+  const [hover, setHover] = useState(false);
   const [isLoading, setLoading] = useState<boolean>(false);
   const [returnedLog, setReturnedLog] = useState<string>("");
-  const [hover, setHover] = useState(false);
   const [popUp_click, setPopUpClick] = useState<boolean>();
   const [wifiName, setWifiName] = useState<string>();
   const [wifiPW, setWifiPW] = useState<string>();
@@ -254,7 +251,7 @@ export default function FormPage({ device_id }: Props) {
                 : "px-0 text-gray-700 "
             } line-clamp-1 h-fit`}
           >
-            Car Controller
+            Smoke DashBoard
           </h1>
           <button
             className={`flex justify-center gap-4  mx-3 w-fit h-fit  py-2 text-xl rounded-2xl  shadow-sm shadow-gray-800 active:shadow-inner active:shadow-black   hover:bg-blue-400 hover:text-black ${
@@ -283,18 +280,17 @@ export default function FormPage({ device_id }: Props) {
       </div>
       <div className=" grid gap-10 place-items-center px-10 lg:flex lg:justify-center md:flex md:justify-center items-start   border-2 border-dashed border-gray-400 shadow-md shadow-gray-800 py-10 rounded-md lg:h-fit">
         <div className="lg:flex md:flex justify-center hidden    w-full lg:w-fit lg:py-5  ">
-          {topic && (
-            <CarPanel
-            isConnected={isConnected}
-            client={client}
-            topic={topic}
-            isLoading={isLoading}
-            device_id={deviceId}
-            device_log={returnedLog}
-            device_connect={deviceConnected}
-          />
-          )}
-          
+          {topic && 
+          <Panel
+          isConnected={isConnected}
+          client={client}
+          topic={topic}
+          isLoading={isLoading}
+          device_id={deviceId}
+          device_log={returnedLog}
+          device_connect={deviceConnected}
+          // dirtValue={dirtValue}
+          />}
         </div>
         <div className="grid gap-4   lg:h-fit px-10 lg:py-5 w-fit">
           <div className="flex justify-start gap-3">
@@ -306,7 +302,17 @@ export default function FormPage({ device_id }: Props) {
               } h-fit text-xl   w-[150px] shadow-md hover:bg-gray-500 shadow-gray-700  px-5 py-1 rounded-2xl`}
               onClick={handleChangeAdjust}
             >
-              {adjust ? <div className="">Default</div> : <div className="flex items-center justify-center gap-2"><Wrench style={{width:"1.4rem",height:'1.4rem'}} className="mt-1"/>Custom</div>}
+              {adjust ? (
+                <div className="">Default</div>
+              ) : (
+                <div className="flex items-center justify-center gap-2">
+                  <Wrench
+                    style={{ width: "1.4rem", height: "1.4rem" }}
+                    className="mt-1"
+                  />
+                  Custom
+                </div>
+              )}
             </button>
             <button
               className={` ${
@@ -314,22 +320,15 @@ export default function FormPage({ device_id }: Props) {
               } bg-white text-blue-700 font-semibold px-5 w-[150px] h-fit line-clamp-1 overflow-hidden text-lg shadow-md shadow-gray-700  hover:bg-gray-500 hover:text-white py-1 justify-end rounded-2xl`}
               onClick={() => setPopUpBtn(!popup_btn)}
             >
-              <CirclePlus style={{width:"1.4rem",height:'1.4rem'}} className="absolute -translate-x-2 translate-y-[3px]"/>
-              <div className="translate-x-3">
-                Add Button
-              </div>
-              
+              <CirclePlus
+                style={{ width: "1.4rem", height: "1.4rem" }}
+                className="absolute -translate-x-2 translate-y-[3px]"
+              />
+              <div className="translate-x-3">Add Button</div>
             </button>
           </div>
           {!adjust ? (
-            <CarJoyStick
-              isConnected={isConnected}
-              client={client}
-              topic={topic}
-              isLoading={isLoading}
-              device_id={deviceId}
-              onLogReturn={getLogReturned}
-            />
+            <div></div>
           ) : (
             <div className="animate-fastFade">
               {buttons.length > 0 ? (
@@ -495,7 +494,6 @@ export default function FormPage({ device_id }: Props) {
     </div>
   );
 }
-
 type CustomizeBtnType = {
   transmitter: {
     press: {
@@ -606,10 +604,10 @@ const PopUpBtn = ({ setPopUpBtn, setButtons }: PopUpBtnProps) => {
       buttonCommand,
     };
     setButtons((prevButtons) => [...prevButtons, newButton]);
-    setButtonCategory('')
-    setButtonLabel('')
-    setButtonCommand('')
-    setButtonType('')
+    setButtonCategory("");
+    setButtonLabel("");
+    setButtonCommand("");
+    setButtonType("");
     setPopUpBtn(false);
   };
 
@@ -685,18 +683,26 @@ const PopUpBtn = ({ setPopUpBtn, setButtons }: PopUpBtnProps) => {
               <div>Default Command</div>
             )}
           </button>
-          <div className={` ${!config_cmd && selectedType == "transmitter" ? "animate-fastFade" : "hidden"}`}>
-            <select className="px-2 py-1 rounded-md bg-gray-500 text-white"
-            onChange={(e) => setButtonCommand(e.target.value)}>
+          <div
+            className={` ${
+              !config_cmd && selectedType == "transmitter"
+                ? "animate-fastFade"
+                : "hidden"
+            }`}
+          >
+            <select
+              className="px-2 py-1 rounded-md bg-gray-500 text-white"
+              onChange={(e) => setButtonCommand(e.target.value)}
+            >
               <option selected>select command</option>
-              <option value={'on'}>On</option>
-              <option value={'off'}>Off</option>
-              <option value={'up'}>Up</option>
-              <option value={'down'}>Down</option>
-              <option value={'left'}>Left</option>
-              <option value={'right'}>Right</option>
-              <option value={'forward'}>Forward</option>
-              <option value={'backward'}>Backward</option>
+              <option value={"on"}>On</option>
+              <option value={"off"}>Off</option>
+              <option value={"up"}>Up</option>
+              <option value={"down"}>Down</option>
+              <option value={"left"}>Left</option>
+              <option value={"right"}>Right</option>
+              <option value={"forward"}>Forward</option>
+              <option value={"backward"}>Backward</option>
             </select>
           </div>
         </div>

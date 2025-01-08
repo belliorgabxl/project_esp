@@ -7,7 +7,7 @@ export default async function page() {
     const session = await auth();
   return (
     <div>
-        <Form/>
+        <Form user={session?.user}/>
     </div>
   )
 }
