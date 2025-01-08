@@ -52,9 +52,16 @@ export default function Panel({
       <hr className={`my-4 ${isLoading ? "animate-fadeIn " : "opacity-0"}`} />
       <div className={`mb-6 ${isLoading ? "animate-fadeIn " : "opacity-0"}`}>
         <div className="text-xl text-white my-1">Device log</div>
-        <div className="bg-gray border-2 shadow-inner flex shadow-gray-950  text-xl rounded-sm text-black font-semibold px-3 py-4 bg-gray-200 text-start">
-          <p className=" duration-75 animate-pulse ">&gt;_&nbsp;&nbsp;&nbsp;</p>
-          Temperature: <b>0</b> C
+        <div className="bg-gray border-2 shadow-inner  shadow-gray-950  text-xl rounded-sm text-black font-semibold px-3 py-4 bg-white text-start">
+          <div className="flex">
+            <p className=" duration-75 animate-pulse ">&gt;_&nbsp;&nbsp;&nbsp;</p>
+          Temperature : &nbsp;&nbsp;<b>0</b>&nbsp;&nbsp; C<br/>
+          </div>
+          <div className="flex">
+            <p className=" duration-75 animate-pulse ">&gt;_&nbsp;&nbsp;&nbsp;</p>
+          smoke : &nbsp;&nbsp;<b>0</b>&nbsp;&nbsp; pm
+          </div>
+          
         </div>
       </div>
       <div className={` ${isLoading ? "animate-fadeIn " : "opacity-0"}`}>

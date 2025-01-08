@@ -8,6 +8,7 @@ import ToggelButton from "@/components/button/toggleButton";
 import ToggleRecieve from "@/components/button/toggleRecieve";
 import { CirclePlus, Wrench } from "lucide-react";
 import Panel from "./Panel";
+import Controller from "./Controller";
 
 type Props = {
   device_id: string;
@@ -280,17 +281,18 @@ export default function Form({ device_id }: Props) {
       </div>
       <div className=" grid gap-10 place-items-center px-10 lg:flex lg:justify-center md:flex md:justify-center items-start   border-2 border-dashed border-gray-400 shadow-md shadow-gray-800 py-10 rounded-md lg:h-fit">
         <div className="lg:flex md:flex justify-center hidden    w-full lg:w-fit lg:py-5  ">
-          {topic && 
-          <Panel
-          isConnected={isConnected}
-          client={client}
-          topic={topic}
-          isLoading={isLoading}
-          device_id={deviceId}
-          device_log={returnedLog}
-          device_connect={deviceConnected}
-          // dirtValue={dirtValue}
-          />}
+          {topic && (
+            <Panel
+              isConnected={isConnected}
+              client={client}
+              topic={topic}
+              isLoading={isLoading}
+              device_id={deviceId}
+              device_log={returnedLog}
+              device_connect={deviceConnected}
+              // dirtValue={dirtValue}
+            />
+          )}
         </div>
         <div className="grid gap-4   lg:h-fit px-10 lg:py-5 w-fit">
           <div className="flex justify-start gap-3">
@@ -328,7 +330,7 @@ export default function Form({ device_id }: Props) {
             </button>
           </div>
           {!adjust ? (
-            <div></div>
+            <Controller />
           ) : (
             <div className="animate-fastFade">
               {buttons.length > 0 ? (
