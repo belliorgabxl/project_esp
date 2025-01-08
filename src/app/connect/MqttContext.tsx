@@ -26,7 +26,6 @@ interface MqttProviderProps {
 export const MqttProvider: FC<MqttProviderProps> = ({ children, topic_device }) => {
   const [topic_devices , setTopic] = useState<string>(topic_device)
 
-  
 
   const [client, setClient] = useState<MqttClient | null>(null);
   const [connectionStatus, setConnectionStatus] = useState<

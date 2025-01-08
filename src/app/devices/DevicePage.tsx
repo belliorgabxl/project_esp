@@ -96,9 +96,9 @@ export default function DevicePage({ user }: Props) {
       toast.error("Please Set Device Name into Your Device.");
     }
 
-    if (device_type == "None" || device_type.length == 0) {
-      toast.error("Please Select Type into Your Device.");
-    }
+    // if (device_type == "None" || device_type.length == 0) {
+    //   toast.error("Please Select Type into Your Device.");
+    // }
     console.log("Products : ", products);
     console.log("find by : ", product_id);
 
@@ -138,17 +138,16 @@ export default function DevicePage({ user }: Props) {
         }
       }
     }
-    if (product_id.length < 2 || err == "") {
+    if (product_id == "" || err == "") {
       toast.error("Require Serial ID.");
     }
     if (err == "owner") {
       toast.error("product is already exist user.");
     }
+    alert(product_id)
 
     if (
       device_name.length > 1 &&
-      device_type.length > 1 &&
-      device_type != "None" &&
       err == "none"
     ) {
       const uuid = uuidv4();
@@ -250,7 +249,6 @@ export default function DevicePage({ user }: Props) {
   const getAddDevicePopUp = (name: string, id: string) => {
     setDeviceName(name);
     setProductId(id);
-    setDevicType("Car");
     setTriggerSubmit(true); // Set a flag to trigger the submission logic
   };
 
